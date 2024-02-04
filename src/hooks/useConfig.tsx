@@ -48,7 +48,7 @@ export const useConfig = () => {
             label: 'fluid color',
         },
 
-        background: {
+        backgroundColor: {
             value: settings.backgroundColor,
             label: 'background color',
         },
