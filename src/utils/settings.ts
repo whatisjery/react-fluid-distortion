@@ -1,0 +1,17 @@
+export default {
+    blend: 5,
+    presence: 5,
+    force: 5,
+    distortion: 1,
+    curl: 20,
+    color: '#005eff',
+    backgroundColor: '#474747',
+    backgroundAlpha: 1,
+    rainbow: false,
+    pressure: 0.8,
+    density: 0.95,
+    velocity: 0.97,
+    dyeRes: 512,
+    simRes: 128,
+    radius: 0.1,
+};
