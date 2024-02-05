@@ -2,8 +2,8 @@ precision highp float;
 
 varying vec2 vUv;
 uniform sampler2D uTexture;
-uniform float value;
+uniform float uClearValue;
 
 void main() {
-    gl_FragColor = value * texture2D(uTexture, vUv);
+    gl_FragColor = uClearValue * texture2D(uTexture, vUv);
 }
