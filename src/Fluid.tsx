@@ -136,16 +136,6 @@ export const Fluid = ({
         [materials],
     );
 
-    /**
-     * Executes update the rendering effect frame by frame.
-     * 1 Renders splats based on mouse movement.
-     * 2 Computes the curl of the velocity field to make the fluid look realistic.
-     * 3 Applies vorticity for detail (responsible for curls intensity).
-     * 4 Solves the pressure equation. (No idea ...)
-     * 5 Subtracts the gradient of the pressure to ensure divergence-free velocity.
-     * 6 Advects velocity / density to simulate "a fluid motion" as randomly spreading.
-     * @param {object} gl - The rendering context of WebGL.
-     */
     useFrame(({ gl }) => {
         if (!meshRef.current || !postRef.current) return;
 
