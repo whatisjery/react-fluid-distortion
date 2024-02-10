@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom/client';
 import './styles.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './exemple/Layout';
-import Exemple1 from './exemple/Exemple1';
-import Exemple2 from './exemple/Exemple2';
+import Exemple1 from './exemple/Exemple2';
+import Exemple2 from './exemple/Exemple1';
 
 const router = createBrowserRouter([
     {
