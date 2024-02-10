@@ -1,15 +1,23 @@
 {
-    "name": "@whatisjery/react-fluid-distortion",
-    "private": true,
-    "version": "0.0.1",
+    "name": "@whatisjery/test",
+    "private": false,
+    "version": "0.0.3",
     "type": "module",
-    "module": "./dist/fluid-distortion.js",
-    "main": "./dist/fluid-distortion.umd.cjs",
+    "main": "dist/index.umd.js",
+    "module": "dist/index.es.js",
+    "types": "dist/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/fluid-distortion.js",
-            "require": "./dist/fluid-distortion.umd.cjs"
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.umd.js"
         }
+    },
+    "files": [
+        "./dist",
+        "!src/main.tsx"
+    ],
+    "publishConfig": {
+        "access": "public"
     },
     "scripts": {
         "dev": "vite",
@@ -18,11 +26,18 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@react-three/drei": "^9.97.0",
+        "@react-three/drei": "9.97.0",
         "@react-three/fiber": "^8.15.16",
+        "@whatisjery/test": "^0.0.3",
         "leva": "^0.9.35",
         "postprocessing": "6.34.1",
-        "three": "^0.160.1"
+        "three": "^0.160.1",
+        "@react-three/postprocessing": "^2.15.13",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router": "^6.22.0",
+        "react-router-dom": "^6.22.0",
+        "tunnel-rat": "^0.1.2"
     },
     "devDependencies": {
         "@types/node": "^20.11.17",
@@ -35,14 +50,9 @@
         "eslint": "^8.56.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.5",
-        "tunnel-rat": "^0.1.2",
         "typescript": "^5.3.3",
         "vite": "^5.1.1",
-        "vite-plugin-glsl": "^1.2.1",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-router": "^6.22.0",
-        "react-router-dom": "^6.22.0",
-        "@react-three/postprocessing": "^2.15.13"
+        "vite-plugin-dts": "^3.7.2",
+        "vite-plugin-glsl": "^1.2.1"
     }
 }

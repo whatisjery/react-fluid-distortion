@@ -16,15 +16,16 @@
         "baseUrl": ".",
         "paths": {
             "@/*": ["src/*"],
-            "react-library": ["src/index.ts"]
+            "react-library": ["index.ts"]
         },
         "typeRoots": ["node_modules/@types", "src/index.d.ts"],
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "declaration": true
     },
 
-    "include": ["src", "**/*.ts", "**/*.tsx", "src", "lib"],
+    "include": ["src", "**/*.ts", "**/*.tsx", "src", "lib", "./index.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
