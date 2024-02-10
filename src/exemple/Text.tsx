@@ -35,8 +35,8 @@ const Text = () => {
                 lineHeight={1.5}
                 position-y={-1}
                 color='white'>
-                THIS IS A FLUID DISTORTION POST PROCESSING MADE TO WORK WITH THE REACT-THREE-FIBER
-                EFFECT COMPOSER. MOVE YOUR MOUSE ARROUND TO SEE HOW IT INTERRACT WITH THE 3D OBJECT
+                A FLUID POST PROCESSING DISTORTION EFFECT MADE TO WORK WITH THE REACT-THREE-FIBER
+                EFFECT COMPOSER. MOVE YOUR MOUSE AROUND TO SEE HOW IT INTERRACT WITH THE 3D OBJECTS
                 IN THE SCENE.
             </DreiText>
         </group>

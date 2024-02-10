@@ -1,43 +1,24 @@
-import { useFrame } from '@react-three/fiber';
-import { Fluid, useConfig } from '@/index';
+import { Fluid } from '@/index';
 import { EffectComposer } from '@react-three/postprocessing';
-import { Environment, MeshTransmissionMaterial } from '@react-three/drei';
-import { useRef } from 'react';
-import { Mesh } from 'three';
+import { useTexture } from '@react-three/drei';
 import { ThreeTunnel } from './tunel';
+
+import img from '@/assets/img.jpg';
 import Text from './Text';
 
 const Box = () => {
-    const meshRef = useRef<Mesh>(null);
-
-    useFrame(() => {
-        if (!meshRef.current) return;
-
-        meshRef.current.rotation.y += 0.01;
-        meshRef.current.rotation.x += 0.005;
-    });
+    const texture = useTexture(img);
     return (
         <>
-            <ambientLight intensity={10.1} />
-            <directionalLight position={[2, 20, 10]} />
-            <Environment preset='warehouse' />
-
-            <mesh position-z={-4} ref={meshRef}>
-                <torusGeometry attach='geometry' args={[2.8, 0.8, 100, 100]} />
-
-                <MeshTransmissionMaterial
-                    transmission={1}
-                    samples={1}
-                    anisotropy={0}
-                    chromaticAberration={0}
-                />
+            <mesh position-z={-4}>
+                <planeGeometry args={[7, 10, 20, 20]} attach='geometry' />
+                <meshBasicMaterial map={texture} />
             </mesh>
         </>
     );
 };
 
 const Exemple1 = () => {
-    const config = useConfig();
     return (
         <ThreeTunnel.In>
             <Text />
@@ -45,7 +26,20 @@ const Exemple1 = () => {
             <Box />
 
             <EffectComposer>
-                <Fluid {...config} />
+                <Fluid
+                    velocityDissipation={1.0}
+                    densityDissipation={0.98}
+                    pressure={0.8}
+                    rainbow={false}
+                    blend={5}
+                    backgroundColor='#070410'
+                    fluidColor='#3300ff'
+                    distortion={0.4}
+                    swirl={4}
+                    curl={1.9}
+                    force={1.1}
+                    intensity={2}
+                />
             </EffectComposer>
         </ThreeTunnel.In>
     );
