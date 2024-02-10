@@ -1,46 +1,46 @@
-import * as THREE from "three"
+import * as THREE from 'three';
 
-import { useDoubleFBO } from "@/hooks/useDoubleFBO"
-import { useFBO } from "@react-three/drei"
-import { useEffect, useMemo } from "react"
+import { useDoubleFBO } from '@/hooks/useDoubleFBO';
+import { useFBO } from '@react-three/drei';
+import { useEffect, useMemo } from 'react';
 
-import settings from "@/utils/settings"
+import { opts } from '@/utils/options';
 
 export const useFBOs = () => {
-    const density = useDoubleFBO(settings.dyeRes, settings.dyeRes, {
+    const density = useDoubleFBO(opts.dyeRes, opts.dyeRes, {
         type: THREE.HalfFloatType,
         format: THREE.RGBAFormat,
         minFilter: THREE.LinearFilter,
         depth: false,
-    })
+    });
 
-    const velocity = useDoubleFBO(settings.simRes, settings.simRes, {
+    const velocity = useDoubleFBO(opts.simRes, opts.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RGFormat,
         minFilter: THREE.LinearFilter,
         depth: false,
-    })
+    });
 
-    const pressure = useDoubleFBO(settings.simRes, settings.simRes, {
+    const pressure = useDoubleFBO(opts.simRes, opts.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RedFormat,
         minFilter: THREE.NearestFilter,
         depth: false,
-    })
+    });
 
-    const divergence = useFBO(settings.simRes, settings.simRes, {
+    const divergence = useFBO(opts.simRes, opts.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RedFormat,
         minFilter: THREE.NearestFilter,
         depth: false,
-    })
+    });
 
-    const curl = useFBO(settings.simRes, settings.simRes, {
+    const curl = useFBO(opts.simRes, opts.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RedFormat,
         minFilter: THREE.NearestFilter,
         depth: false,
-    })
+    });
 
     const FBOs = useMemo(() => {
         return {
@@ -49,16 +49,16 @@ export const useFBOs = () => {
             pressure,
             divergence,
             curl,
-        }
-    }, [curl, density, divergence, pressure, velocity])
+        };
+    }, [curl, density, divergence, pressure, velocity]);
 
     useEffect(() => {
         return () => {
             for (const FBO of Object.values(FBOs)) {
-                FBO.dispose()
+                FBO.dispose();
             }
-        }
-    }, [FBOs])
+        };
+    }, [FBOs]);
 
-    return FBOs
-}
+    return FBOs;
+};

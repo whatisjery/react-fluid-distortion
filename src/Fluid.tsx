@@ -1,67 +1,58 @@
 import { useCallback, useMemo, useRef } from 'react';
 import { ThreeEvent, createPortal, useFrame, useThree } from '@react-three/fiber';
+import { Camera, Mesh, Scene, Vector2, Vector3, Texture, Color } from 'three';
 import { useFBOs } from '@/hooks/useFBOs';
 import { useMaterials } from '@/hooks/useMaterials';
 import { ShaderPass } from 'three/examples/jsm/Addons.js';
-import { Camera, Mesh, Scene, Vector2, Vector3, Texture, Color } from 'three';
+import { TypeProps } from './utils/types';
+import { opts } from '@/utils/options';
 import { Fluid as FluidEffect } from './effect/Fluid';
 
-import settings from '@/utils/settings';
+interface TypeUniforms {
+    uColor: Vector3 | Color;
+    uPointer: Vector2;
 
-type Uniform =
-    | 'uTarget'
-    | 'uPoint'
-    | 'uColor'
-    | 'uRadius'
-    | 'uVelocity'
-    | 'uCurl'
-    | 'uCurlValue'
-    | 'uTexture'
-    | 'uClearValue'
-    | 'uPressure'
-    | 'uDivergence'
-    | 'uSource'
-    | 'uDissipation';
+    uTarget: Texture | null;
+    uVelocity: Texture;
+    uCurl: Texture;
+    uTexture: Texture;
+    uPressure: Texture;
+    uDivergence: Texture;
+    uSource: Texture;
 
-type UniformValue = Texture | Vector3 | Vector2 | Color | number;
+    uRadius: number;
+    uClearValue: number;
+    uCurlValue: number;
+    uDissipation: number;
+}
 
-type MouseEvent = ThreeEvent<PointerEvent>;
-
-type MaterialName = keyof ReturnType<typeof useMaterials>;
-
-type FBOName = keyof ReturnType<typeof useFBOs>;
-
-type Props = {
-    density?: number;
-    blend?: number;
-    presence?: number;
-    distortion?: number;
-    rainbow?: boolean;
-    color?: string;
-    backgroundColor?: string;
-    backgroundAlpha?: number;
-    pressure?: number;
-    velocity?: number;
-    force?: number;
-    radius?: number;
-    curl?: number;
+type TypeSplatStack = {
+    mouseX?: number;
+    mouseY?: number;
+    velocityX?: number;
+    velocityY?: number;
 };
 
+type TypeMaterialName = keyof ReturnType<typeof useMaterials>;
+
+type TypeFBOName = keyof ReturnType<typeof useFBOs>;
+
 export const Fluid = ({
-    density = settings.density,
-    color = settings.color,
-    presence = settings.presence,
-    distortion = settings.distortion,
-    backgroundColor = settings.backgroundColor,
-    backgroundAlpha = settings.backgroundAlpha,
-    blend = settings.blend,
-    rainbow = settings.rainbow,
-    pressure = settings.pressure,
-    velocity = settings.velocity,
-    force = settings.force,
-    radius = settings.radius,
-    curl = settings.curl,
-}: Props) => {
+    blend = opts.blend,
+    force = opts.force,
+    radius = opts.radius,
+    curl = opts.curl,
+    swirl = opts.swirl,
+    intensity = opts.intensity,
+    distortion = opts.distortion,
+    fluidColor = opts.fluidColor,
+    backgroundColor = opts.backgroundColor,
+    showBackground = opts.showBackground,
+    rainbow = opts.rainbow,
+    pressure = opts.pressure,
+    densityDissipation = opts.densityDissipation,
+    velocityDissipation = opts.velocityDissipation,
+}: TypeProps) => {
     const size = useThree((three) => three.size);
     const gl = useThree((three) => three.gl);
 
@@ -70,39 +61,40 @@ export const Fluid = ({
 
     const meshRef = useRef<Mesh>(null);
     const postRef = useRef<ShaderPass>(null);
+    const splatStack: TypeSplatStack[] = useRef([]).current;
+
     const lastMouse = useRef<Vector2>(new Vector2());
-    const mouseMoved = useRef<boolean>(false);
-    const splats: any = useRef([]).current;
+    const hasMoved = useRef<boolean>(false);
 
     const FBOs = useFBOs();
     const materials = useMaterials();
 
     const onPointerMove = useCallback(
-        (event: MouseEvent) => {
+        (event: ThreeEvent<PointerEvent>) => {
             const deltaX = event.x - lastMouse.current.x;
             const deltaY = event.y - lastMouse.current.y;
 
-            if (!mouseMoved.current) {
-                mouseMoved.current = true;
+            if (!hasMoved.current) {
+                hasMoved.current = true;
                 lastMouse.current.set(event.x, event.y);
             }
 
             lastMouse.current.set(event.x, event.y);
 
-            if (Math.abs(deltaX) || Math.abs(deltaY)) {
-                splats.push({
-                    mouseX: event.x / size.width,
-                    mouseY: 1.0 - event.y / size.height,
-                    velocityX: deltaX * force,
-                    velocityY: -deltaY * force,
-                });
-            }
+            if (!hasMoved.current) return;
+
+            splatStack.push({
+                mouseX: event.x / size.width,
+                mouseY: 1.0 - event.y / size.height,
+                velocityX: deltaX * force,
+                velocityY: -deltaY * force,
+            });
         },
-        [force, size.height, size.width, splats],
+        [force, size.height, size.width, splatStack],
     );
 
     const setShaderMaterial = useCallback(
-        (name: MaterialName) => {
+        (name: TypeMaterialName) => {
             if (!meshRef.current) return;
 
             meshRef.current.material = materials[name];
@@ -112,7 +104,7 @@ export const Fluid = ({
     );
 
     const setRenderTarget = useCallback(
-        (name: FBOName) => {
+        (name: TypeFBOName) => {
             const target = FBOs[name];
 
             if ('write' in target) {
@@ -130,8 +122,15 @@ export const Fluid = ({
     );
 
     const setUniforms = useCallback(
-        (material: MaterialName, uniform: Uniform, value: UniformValue) => {
-            materials[material].uniforms[uniform].value = value;
+        <K extends keyof TypeUniforms>(
+            material: TypeMaterialName,
+            uniform: K,
+            value: TypeUniforms[K],
+        ) => {
+            const mat = materials[material];
+            if (mat && mat.uniforms[uniform]) {
+                mat.uniforms[uniform].value = value;
+            }
         },
         [materials],
     );
@@ -139,20 +138,19 @@ export const Fluid = ({
     useFrame(({ gl }) => {
         if (!meshRef.current || !postRef.current) return;
 
-        // Render splat
-        for (let i = splats.length - 1; i >= 0; i--) {
-            const { mouseX, mouseY, velocityX, velocityY } = splats[i];
+        for (let i = splatStack.length - 1; i >= 0; i--) {
+            const { mouseX, mouseY, velocityX, velocityY } = splatStack[i];
 
             setShaderMaterial('splat');
             setUniforms('splat', 'uTarget', FBOs.velocity.read.texture);
-            setUniforms('splat', 'uPoint', new Vector2(mouseX, mouseY));
+            setUniforms('splat', 'uPointer', new Vector2(mouseX, mouseY));
             setUniforms('splat', 'uColor', new Vector3(velocityX, velocityY, 10.0));
             setUniforms('splat', 'uRadius', radius / 100.0);
             setRenderTarget('velocity');
             setUniforms('splat', 'uTarget', FBOs.density.read.texture);
             setRenderTarget('density');
 
-            splats.splice(i, 1);
+            splatStack.pop();
         }
 
         setShaderMaterial('curl');
@@ -177,8 +175,10 @@ export const Fluid = ({
         setShaderMaterial('pressure');
         setUniforms('pressure', 'uDivergence', FBOs.divergence.texture);
 
-        setUniforms('pressure', 'uPressure', FBOs.pressure.read.texture);
-        setRenderTarget('pressure');
+        for (let i = 0; i < swirl; i++) {
+            setUniforms('pressure', 'uPressure', FBOs.pressure.read.texture);
+            setRenderTarget('pressure');
+        }
 
         setShaderMaterial('gradientSubstract');
         setUniforms('gradientSubstract', 'uPressure', FBOs.pressure.read.texture);
@@ -188,12 +188,12 @@ export const Fluid = ({
         setShaderMaterial('advection');
         setUniforms('advection', 'uVelocity', FBOs.velocity.read.texture);
         setUniforms('advection', 'uSource', FBOs.velocity.read.texture);
-        setUniforms('advection', 'uDissipation', velocity);
+        setUniforms('advection', 'uDissipation', velocityDissipation);
 
         setRenderTarget('velocity');
         setUniforms('advection', 'uVelocity', FBOs.velocity.read.texture);
         setUniforms('advection', 'uSource', FBOs.density.read.texture);
-        setUniforms('advection', 'uDissipation', density);
+        setUniforms('advection', 'uDissipation', densityDissipation);
 
         setRenderTarget('density');
 
@@ -207,23 +207,22 @@ export const Fluid = ({
                 <mesh
                     ref={meshRef}
                     onPointerMove={onPointerMove}
-                    scale={[size.width, size.height, 1]}
-                >
+                    scale={[size.width, size.height, 1]}>
                     <planeGeometry args={[2, 2, 10, 10]} />
                 </mesh>,
                 bufferScene,
             )}
 
             <FluidEffect
-                presence={presence * 0.0001}
+                intensity={intensity * 0.0001}
                 rainbow={rainbow}
                 distortion={distortion * 0.001}
                 backgroundColor={backgroundColor}
                 blend={blend * 0.01}
-                color={color}
+                fluidColor={fluidColor}
+                showBackground={showBackground}
                 ref={postRef}
                 tFluid={FBOs.density.read.texture}
-                backgroundAlpha={backgroundAlpha}
             />
         </>
     );

@@ -1,26 +1,18 @@
 import { useControls, button } from 'leva';
-import settings from '@/utils/settings';
+import { opts } from '@/utils/options';
 
 export const useConfig = () => {
     const [params, set] = useControls('Settings', () => ({
-        blend: {
-            value: settings.blend,
+        intensity: {
+            value: opts.intensity,
             min: 0.0,
             max: 10,
             step: 0.01,
-            label: 'blend',
-        },
-
-        presence: {
-            value: settings.presence,
-            min: 0.0,
-            max: 10,
-            step: 0.01,
-            label: 'presence',
+            label: 'intensity',
         },
 
         force: {
-            value: settings.force,
+            value: opts.force,
             min: 0,
             max: 20,
             step: 0.1,
@@ -28,7 +20,7 @@ export const useConfig = () => {
         },
 
         distortion: {
-            value: settings.distortion,
+            value: opts.distortion,
             min: 0,
             max: 2,
             step: 0.01,
@@ -36,54 +28,67 @@ export const useConfig = () => {
         },
 
         curl: {
-            value: settings.curl,
+            value: opts.curl,
             min: 0,
             max: 50,
             step: 0.1,
             label: 'curl',
         },
 
-        color: {
-            value: settings.color,
+        swirl: {
+            value: opts.swirl,
+            min: 0,
+            max: 20,
+            step: 1,
+            label: 'swirl',
+        },
+
+        fluidColor: {
+            value: opts.fluidColor,
             label: 'fluid color',
         },
 
         backgroundColor: {
-            value: settings.backgroundColor,
+            value: opts.backgroundColor,
             label: 'background color',
         },
 
-        backgroundAlpha: {
-            value: settings.backgroundAlpha,
-            min: 0,
-            max: 1,
+        blend: {
+            value: opts.blend,
+            min: 0.0,
+            max: 10,
             step: 0.01,
-            label: 'bg opacity',
+            label: 'blend',
+        },
+
+        showBackground: {
+            value: opts.showBackground,
+            label: 'show background',
         },
 
         rainbow: {
-            value: settings.rainbow,
+            value: opts.rainbow,
             label: 'rainbow mode',
         },
 
         pressure: {
-            value: settings.pressure,
+            value: opts.pressure,
             min: 0,
             max: 1,
             step: 0.01,
-            label: 'pressure dissipation',
+            label: 'pressure reduction',
         },
 
-        density: {
-            value: settings.density,
+        densityDissipation: {
+            value: opts.densityDissipation,
             min: 0,
             max: 1,
             step: 0.01,
             label: 'density dissipation',
         },
 
-        velocity: {
-            value: settings.velocity,
+        velocityDissipation: {
+            value: opts.velocityDissipation,
             min: 0,
             max: 1,
             step: 0.01,
@@ -91,14 +96,14 @@ export const useConfig = () => {
         },
 
         radius: {
-            value: settings.radius,
+            value: opts.radius,
             min: 0.01,
             max: 1,
             step: 0.01,
             label: 'radius',
         },
-        'reset settings': button(() => {
-            set({ ...settings });
+        'reset opts': button(() => {
+            set({ ...opts });
         }),
     }));
 

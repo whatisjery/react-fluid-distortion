@@ -3,11 +3,11 @@ varying vec2 vUv;
 uniform sampler2D uTarget;
 uniform float aspectRatio;
 uniform vec3 uColor;
-uniform vec2 uPoint;
+uniform vec2 uPointer;
 uniform float uRadius;
 
 void main() {
-    vec2 p = vUv - uPoint.xy;
+    vec2 p = vUv - uPointer.xy;
 
     p.x *= aspectRatio;
 

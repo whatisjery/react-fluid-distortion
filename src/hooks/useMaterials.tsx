@@ -3,6 +3,7 @@
 import { ShaderMaterial, Texture, Vector2, Vector3 } from 'three';
 import { useEffect, useMemo } from 'react';
 import { useThree } from '@react-three/fiber';
+import { opts } from '@/utils/options';
 
 import baseVertex from '@/glsl/base.glsl';
 import clearFrag from '@/glsl/clear.glsl';
@@ -13,8 +14,6 @@ import pressureFrag from '@/glsl/pressure.glsl';
 import splatFrag from '@/glsl/splat.glsl';
 import advectionFrag from '@/glsl/advection.glsl';
 import vorticityFrag from '@/glsl/vorticity.glsl';
-
-import settings from '@/utils/settings';
 
 export const useMaterials = (): { [key: string]: ShaderMaterial } => {
     const size = useThree((s) => s.size);
@@ -45,7 +44,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Texture(),
                 },
                 uClearValue: {
-                    value: settings.pressure,
+                    value: opts.pressure,
                 },
                 texelSize: {
                     value: new Vector2(),
@@ -119,11 +118,11 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                 uColor: {
                     value: new Vector3(),
                 },
-                uPoint: {
+                uPointer: {
                     value: new Vector2(),
                 },
                 uRadius: {
-                    value: settings.radius / 100.0,
+                    value: opts.radius / 100.0,
                 },
                 texelSize: {
                     value: new Vector2(),
@@ -141,7 +140,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Texture(),
                 },
                 uCurlValue: {
-                    value: settings.curl,
+                    value: opts.curl,
                 },
                 dt: {
                     value: 0.016,
@@ -169,10 +168,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
         for (const material of Object.values(shaderMaterials)) {
             const aspectRatio = size.width / (size.height + 400);
 
-            material.uniforms.texelSize.value.set(
-                1 / (settings.simRes * aspectRatio),
-                1 / settings.simRes,
-            );
+            material.uniforms.texelSize.value.set(1 / (opts.simRes * aspectRatio), 1 / opts.simRes);
 
             material.vertexShader = baseVertex;
 
