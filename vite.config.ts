@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import glsl from 'vite-plugin-glsl';
 
-// https://vitejs.dev/config/
 export default defineConfig({
+    publicDir: false,
     plugins: [react(), glsl()],
     resolve: {
         alias: [
@@ -17,10 +17,10 @@ export default defineConfig({
     },
     build: {
         lib: {
-            entry: resolve('src', 'index.ts'),
-            name: 'ReactViteLibrary',
-            formats: ['es', 'umd'],
-            fileName: (format) => `react-vite-library.${format}.js`,
+            // eslint-disable-next-line no-undef
+            entry: resolve(__dirname, 'src/index.ts'),
+            name: 'Fluid distortion',
+            fileName: 'fluid-distortion',
         },
     },
 });

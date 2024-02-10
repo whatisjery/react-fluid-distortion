@@ -3,6 +3,10 @@
     "tabWidth": 4,
     "printWidth": 100,
     "singleQuote": true,
+    "jsxSingleQuote": true,
     "trailingComma": "all",
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "singleAttributePerLine": false,
+    "object-curly-spacing": "always"
 }

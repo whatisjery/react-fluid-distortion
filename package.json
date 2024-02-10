@@ -1,8 +1,16 @@
 {
-    "name": "post-fluid-distortion",
+    "name": "@whatisjery/react-fluid-distortion",
     "private": true,
     "version": "0.0.1",
     "type": "module",
+    "module": "./dist/fluid-distortion.js",
+    "main": "./dist/fluid-distortion.umd.cjs",
+    "exports": {
+        ".": {
+            "import": "./dist/fluid-distortion.js",
+            "require": "./dist/fluid-distortion.umd.cjs"
+        }
+    },
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
@@ -12,26 +20,29 @@
     "dependencies": {
         "@react-three/drei": "^9.97.0",
         "@react-three/fiber": "^8.15.16",
-        "@react-three/postprocessing": "^2.15.13",
         "leva": "^0.9.35",
         "postprocessing": "6.34.1",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
         "three": "^0.160.1"
     },
     "devDependencies": {
-        "@types/node": "^20.11.16",
-        "@types/react": "^18.2.52",
-        "@types/react-dom": "^18.2.18",
+        "@types/node": "^20.11.17",
+        "@types/react": "^18.2.55",
+        "@types/react-dom": "^18.2.19",
         "@types/three": "^0.160.0",
-        "@typescript-eslint/eslint-plugin": "^6.20.0",
-        "@typescript-eslint/parser": "^6.20.0",
+        "@typescript-eslint/eslint-plugin": "^6.21.0",
+        "@typescript-eslint/parser": "^6.21.0",
         "@vitejs/plugin-react": "^4.2.1",
         "eslint": "^8.56.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.5",
+        "tunnel-rat": "^0.1.2",
         "typescript": "^5.3.3",
-        "vite": "^5.0.12",
-        "vite-plugin-glsl": "^1.2.1"
+        "vite": "^5.1.1",
+        "vite-plugin-glsl": "^1.2.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router": "^6.22.0",
+        "react-router-dom": "^6.22.0",
+        "@react-three/postprocessing": "^2.15.13"
     }
 }
