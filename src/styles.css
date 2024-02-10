@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+    font-family: 'ABCNormal-Light';
+    background: rgb(0, 0, 0);
+    font-size: 1.3rem;
+}
+
+a {
+    text-transform: none;
+    color: white;
+    margin-right: 0.5rem;
+    pointer-events: initial;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+canvas {
+    pointer-events: initial;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 2;
+    position: relative;
+    text-transform: uppercase;
+}
