@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Mesh } from 'three';
 import { useFrame } from '@react-three/fiber';
-import { Fluid, useConfig } from '../../lib/index';
+import { Fluid, useConfig } from '../../lib';
 import { EffectComposer } from '@react-three/postprocessing';
 import { Environment, MeshTransmissionMaterial } from '@react-three/drei';
 import { ThreeTunnel } from './tunel';

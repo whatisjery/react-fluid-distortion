@@ -12,13 +12,15 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
+        "noEmitOnError": true,
         "jsx": "react-jsx",
         "baseUrl": ".",
         "paths": {
             "@/*": ["src/*"],
             "react-library": ["lib/index.ts"]
         },
-        "typeRoots": ["node_modules/@types", "src/index.d.ts"],
+        "typeRoots": ["node_modules/@types", "lib/index.d.ts"],
+        "types": ["node"],
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
@@ -26,6 +28,6 @@
         "declaration": true
     },
 
-    "include": ["src", "**/*.ts", "**/*.tsx", "src", "lib", "lib/index.ts"],
+    "include": ["src", "**/*.ts", "**/*.tsx", "src"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

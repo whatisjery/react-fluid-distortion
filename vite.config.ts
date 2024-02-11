@@ -1,4 +1,4 @@
-import path from 'path';
+import * as path from 'path';
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
@@ -20,16 +20,29 @@ export default defineConfig({
         lib: {
             // eslint-disable-next-line no-undef
             entry: path.resolve(__dirname, 'lib/index.ts'),
-            name: 'fluid-distortion',
+            name: 'react-fluid-distortion',
+            formats: ['es', 'umd'],
             fileName: (format) => `index.${format}.js`,
         },
         rollupOptions: {
-            external: ['react', 'react-dom', '@react-three/fiber'],
+            external: [
+                'react',
+                'react-dom',
+                '@react-three/fiber',
+                '@react-three/drei',
+                'three',
+                'leva',
+                'postprocessing',
+            ],
             output: {
                 globals: {
                     react: 'React',
                     'react-dom': 'ReactDOM',
                     '@react-three/fiber': 'reactThreeFiber',
+                    '@react-three/drei': 'drei',
+                    three: 'THREE',
+                    leva: 'leva',
+                    postprocessing: 'postprocessing',
                 },
             },
         },

@@ -10,12 +10,10 @@ const Image = () => {
     const texture = useTexture(img);
 
     return (
-        <>
-            <mesh position-z={-4}>
-                <planeGeometry args={[7, 10, 20, 20]} attach='geometry' />
-                <meshBasicMaterial map={texture} color='#c4b4d2' />
-            </mesh>
-        </>
+        <mesh position-z={-4}>
+            <planeGeometry args={[7, 10, 20, 20]} attach='geometry' />
+            <meshBasicMaterial map={texture} color='#c4b4d2' />
+        </mesh>
     );
 };
 
