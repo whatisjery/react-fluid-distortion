@@ -14,6 +14,9 @@ dependencies:
   '@react-three/postprocessing':
     specifier: ^2.15.13
     version: 2.15.13(@react-three/fiber@8.15.16)(@types/three@0.160.0)(react@18.2.0)(three@0.160.1)
+  '@whatisjery/react-fluid-distortion':
+    specifier: ^1.0.0
+    version: 1.0.0(@react-three/drei@9.97.0)(@react-three/fiber@8.15.16)(@types/react@18.2.55)(@types/three@0.160.0)(leva@0.9.35)(postprocessing@6.34.1)(react-dom@18.2.0)(react@18.2.0)(three@0.160.1)
   leva:
     specifier: ^0.9.35
     version: 0.9.35(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
@@ -1710,6 +1713,32 @@ packages:
   /@vue/shared@3.4.18:
     resolution: {integrity: sha512-CxouGFxxaW5r1WbrSmWwck3No58rApXgRSBxrqgnY1K+jk20F6DrXJkHdH9n4HVT+/B6G2CAn213Uq3npWiy8Q==}
     dev: true
+
+  /@whatisjery/react-fluid-distortion@1.0.0(@react-three/drei@9.97.0)(@react-three/fiber@8.15.16)(@types/react@18.2.55)(@types/three@0.160.0)(leva@0.9.35)(postprocessing@6.34.1)(react-dom@18.2.0)(react@18.2.0)(three@0.160.1):
+    resolution: {integrity: sha512-Jqd37lTKXcWQzOpxrAOGCP8Rok2zjdVIWhky02TDGGB4eCTRppsnMauhmBXniHBR8ydjkoeT0AGuzbKVR7eJ9g==}
+    peerDependencies:
+      '@react-three/drei': 9.97.0
+      '@react-three/fiber': ^8.15.16
+      leva: ^0.9.35
+      postprocessing: 6.34.1
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      three: ^0.160.1
+    dependencies:
+      '@react-three/drei': 9.97.0(@react-three/fiber@8.15.16)(@types/react@18.2.55)(@types/three@0.160.0)(react-dom@18.2.0)(react@18.2.0)(three@0.160.1)
+      '@react-three/fiber': 8.15.16(react-dom@18.2.0)(react@18.2.0)(three@0.160.1)
+      '@react-three/postprocessing': 2.15.13(@react-three/fiber@8.15.16)(@types/three@0.160.0)(react@18.2.0)(three@0.160.1)
+      leva: 0.9.35(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
+      postprocessing: 6.34.1(three@0.160.1)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      three: 0.160.1
+      tunnel-rat: 0.1.2(@types/react@18.2.55)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/three'
+      - immer
+    dev: false
 
   /acorn-jsx@5.3.2(acorn@8.11.3):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}

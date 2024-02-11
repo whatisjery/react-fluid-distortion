@@ -41,6 +41,7 @@
         "@react-three/drei": "9.97.0",
         "@react-three/fiber": "^8.15.16",
         "@react-three/postprocessing": "^2.15.13",
+        "@whatisjery/react-fluid-distortion": "^1.0.0",
         "leva": "^0.9.35",
         "postprocessing": "6.34.1",
         "three": "^0.160.1",
