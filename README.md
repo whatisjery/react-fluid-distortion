@@ -6,7 +6,7 @@ Post-processing for fluid distortion effect, based on the shaders developed by [
 
 ## Try it :
 
-[codesandbox](https://codesandbox.io/p/github/whatisjery/react-fluid-distortion/main)
+[codesandbox](https://codesandbox.io/p/github/whatisjery/react-fluid-distortion)
 
 ## Installation :
 
