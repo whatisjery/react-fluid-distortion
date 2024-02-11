@@ -1,11 +1,11 @@
 import { useCallback, useMemo, useRef } from 'react';
 import { ThreeEvent, createPortal, useFrame, useThree } from '@react-three/fiber';
 import { Camera, Mesh, Scene, Vector2, Vector3, Texture, Color } from 'three';
-import { useFBOs } from '@/hooks/useFBOs';
-import { useMaterials } from '@/hooks/useMaterials';
+import { useFBOs } from './hooks/useFBOs';
+import { useMaterials } from './hooks/useMaterials';
 import { ShaderPass } from 'three/examples/jsm/Addons.js';
 import { TypeProps } from './utils/types';
-import { opts } from '@/utils/options';
+import { opts } from './utils/options';
 import { Fluid as FluidEffect } from './effect/Fluid';
 
 interface TypeUniforms {
@@ -32,10 +32,6 @@ type TypeSplatStack = {
     velocityX?: number;
     velocityY?: number;
 };
-
-type TypeMaterialName = keyof ReturnType<typeof useMaterials>;
-
-type TypeFBOName = keyof ReturnType<typeof useFBOs>;
 
 export const Fluid = ({
     blend = opts.blend,
@@ -94,7 +90,7 @@ export const Fluid = ({
     );
 
     const setShaderMaterial = useCallback(
-        (name: TypeMaterialName) => {
+        (name: keyof ReturnType<typeof useMaterials>) => {
             if (!meshRef.current) return;
 
             meshRef.current.material = materials[name];
@@ -104,7 +100,7 @@ export const Fluid = ({
     );
 
     const setRenderTarget = useCallback(
-        (name: TypeFBOName) => {
+        (name: keyof ReturnType<typeof useFBOs>) => {
             const target = FBOs[name];
 
             if ('write' in target) {
@@ -123,7 +119,7 @@ export const Fluid = ({
 
     const setUniforms = useCallback(
         <K extends keyof TypeUniforms>(
-            material: TypeMaterialName,
+            material: keyof ReturnType<typeof useMaterials>,
             uniform: K,
             value: TypeUniforms[K],
         ) => {

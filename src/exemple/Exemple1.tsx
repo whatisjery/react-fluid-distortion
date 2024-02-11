@@ -1,4 +1,4 @@
-import { Fluid } from '../../index';
+import { Fluid } from '../../lib/Fluid';
 import { EffectComposer } from '@react-three/postprocessing';
 import { useTexture } from '@react-three/drei';
 import { ThreeTunnel } from './tunel';

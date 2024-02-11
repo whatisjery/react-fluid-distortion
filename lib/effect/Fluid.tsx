@@ -1,11 +1,10 @@
 import { Texture, Uniform, Vector3 } from 'three';
 import { forwardRef, useEffect, useMemo } from 'react';
-
 import { Effect } from 'postprocessing';
-import { hexToRgb } from '@/utils/colors';
-import { TypeEffectProps } from '@/utils/types';
+import { hexToRgb } from '../utils/colors';
+import { TypeEffectProps } from '../utils/types';
 
-import fragmentShader from '@/glsl/post.glsl';
+import fragmentShader from '../glsl/post.glsl';
 
 type TypeUniformValues = {
     tFluid: Texture | null;

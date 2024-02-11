@@ -16,7 +16,7 @@
         "baseUrl": ".",
         "paths": {
             "@/*": ["src/*"],
-            "react-library": ["index.ts"]
+            "react-library": ["lib/index.ts"]
         },
         "typeRoots": ["node_modules/@types", "src/index.d.ts"],
         "strict": true,
@@ -26,6 +26,6 @@
         "declaration": true
     },
 
-    "include": ["src", "**/*.ts", "**/*.tsx", "src", "lib", "./index.ts"],
+    "include": ["src", "**/*.ts", "**/*.tsx", "src", "lib", "lib/index.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

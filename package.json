@@ -4,8 +4,8 @@
     "version": "0.0.3",
     "type": "module",
     "main": "dist/index.umd.js",
-    "module": "dist/index.es.js",
-    "types": "dist/index.d.ts",
+    "module": "./dist/index.es.js",
+    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
             "import": "./dist/index.es.js",
@@ -13,8 +13,7 @@
         }
     },
     "files": [
-        "./dist",
-        "!src/main.tsx"
+        "./dist"
     ],
     "publishConfig": {
         "access": "public"
@@ -25,19 +24,9 @@
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview"
     },
-    "dependencies": {
-        "@react-three/drei": "9.97.0",
-        "@react-three/fiber": "^8.15.16",
-        "@whatisjery/test": "^0.0.3",
-        "leva": "^0.9.35",
-        "postprocessing": "6.34.1",
-        "three": "^0.160.1",
-        "@react-three/postprocessing": "^2.15.13",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-router": "^6.22.0",
-        "react-router-dom": "^6.22.0",
-        "tunnel-rat": "^0.1.2"
+    "peerDependencies": {
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0"
     },
     "devDependencies": {
         "@types/node": "^20.11.17",
@@ -53,6 +42,17 @@
         "typescript": "^5.3.3",
         "vite": "^5.1.1",
         "vite-plugin-dts": "^3.7.2",
-        "vite-plugin-glsl": "^1.2.1"
+        "vite-plugin-glsl": "^1.2.1",
+        "@react-three/drei": "9.97.0",
+        "@react-three/fiber": "^8.15.16",
+        "leva": "^0.9.35",
+        "postprocessing": "6.34.1",
+        "three": "^0.160.1",
+        "@react-three/postprocessing": "^2.15.13",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router": "^6.22.0",
+        "react-router-dom": "^6.22.0",
+        "tunnel-rat": "^0.1.2"
     }
 }

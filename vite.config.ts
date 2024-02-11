@@ -6,7 +6,8 @@ import glsl from 'vite-plugin-glsl';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-    plugins: [react(), glsl(), dts()],
+    plugins: [react(), glsl(), dts({ include: 'lib' })],
+
     resolve: {
         alias: [
             {
@@ -18,20 +19,22 @@ export default defineConfig({
     build: {
         lib: {
             // eslint-disable-next-line no-undef
-            entry: path.resolve(__dirname, 'index.ts'),
+            entry: path.resolve(__dirname, 'lib/index.ts'),
             name: 'fluid-distortion',
             fileName: (format) => `index.${format}.js`,
         },
         rollupOptions: {
-            external: ['react', 'react-dom'],
+            external: ['react', 'react-dom', '@react-three/fiber'],
             output: {
                 globals: {
                     react: 'React',
                     'react-dom': 'ReactDOM',
+                    '@react-three/fiber': 'reactThreeFiber',
                 },
             },
         },
         sourcemap: true,
         emptyOutDir: true,
+        copyPublicDir: false,
     },
 });

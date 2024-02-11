@@ -1,5 +1,5 @@
 import { useControls, button } from 'leva';
-import { opts } from '@/utils/options';
+import { opts } from '../utils/options';
 
 export const useConfig = () => {
     const [params, set] = useControls('Settings', () => ({

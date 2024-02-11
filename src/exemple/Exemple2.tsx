@@ -1,10 +1,11 @@
-import { useFrame } from '@react-three/fiber';
-import { Fluid, useConfig } from '../../index';
-import { EffectComposer } from '@react-three/postprocessing';
-import { Environment, MeshTransmissionMaterial } from '@react-three/drei';
 import { useRef } from 'react';
 import { Mesh } from 'three';
+import { useFrame } from '@react-three/fiber';
+import { Fluid, useConfig } from '../../lib/index';
+import { EffectComposer } from '@react-three/postprocessing';
+import { Environment, MeshTransmissionMaterial } from '@react-three/drei';
 import { ThreeTunnel } from './tunel';
+
 import Text from './Text';
 
 const Torus = () => {
