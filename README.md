@@ -28,9 +28,9 @@ pnpm add @whatisjery/react-fluid-distortion @react-three/drei postprocessing lev
 ## Example of use :
 
 ```jsx
+import { Fluid } from '@/whatisjery/react-fluid-distortion';
 import { EffectComposer } from '@react-three/postprocessing';
 import { Canvas } from '@react-three/fiber';
-import { Fluid } from '@/index';
 
 <Canvas
     style={{
@@ -53,9 +53,9 @@ import { Fluid } from '@/index';
 Show a debug panel to test options more easily.
 
 ```jsx
+import { Fluid, useConfig } from '@/whatisjery/react-fluid-distortion';
 import { EffectComposer } from '@react-three/postprocessing';
 import { Canvas } from '@react-three/fiber';
-import { Fluid, useConfig } from '@/index';
 
 const config = useConfig();
 
