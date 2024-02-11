@@ -10,7 +10,7 @@ Post-processing for fluid distortion effect, based on the shaders developed by [
 npm install @whatisjery/react-fluid-distortion @react-three/drei postprocessing leva
 ```
 
-The required dependencies for it to work are [postprocessing](https://github.com/pmndrs/postprocessing), [drei](https://github.com/pmndrs/drei) and [leva](https://github.com/pmndrs/leva) if you intend to use the `useConfig`hooks to show the debug panel
+The required dependencies for it to work are [postprocessing](https://github.com/pmndrs/postprocessing), [drei](https://github.com/pmndrs/drei) and optionally [leva](https://github.com/pmndrs/leva) if you intend to use the `useConfig`hooks to show the debug panel.
 
 ## Usage :
 
@@ -25,7 +25,7 @@ import { Fluid } from '@/index';
 
 ## Debug pannel :
 
-Show a debug pannel to test options more easily.
+Show a debug panel to test options more easily.
 
 ```jsx
 import { EffectComposer } from '@react-three/postprocessing';
