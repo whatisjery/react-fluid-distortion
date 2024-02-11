@@ -8,6 +8,16 @@
     "main": "dist/index.umd.js",
     "module": "dist/index.es.js",
     "types": "dist/lib/index.d.ts",
+    ".": {
+        "import": "./dist/index.es.js",
+        "require": "./dist/index.umd.js"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview"
+    },
     "license": "MIT",
     "peerDependencies": {
         "@react-three/drei": "9.97.0",
@@ -35,23 +45,17 @@
         "typescript": "^5.3.3",
         "vite": "^5.1.1",
         "vite-plugin-dts": "^3.7.2",
-        "vite-plugin-glsl": "^1.2.1"
+        "vite-plugin-glsl": "^1.2.1",
+        "vite-tsconfig-paths": "^4.3.1"
     },
     "dependencies": {
         "@react-three/drei": "9.97.0",
         "@react-three/fiber": "^8.15.16",
         "@react-three/postprocessing": "^2.15.13",
-        "@whatisjery/react-fluid-distortion": "^1.0.0",
         "leva": "^0.9.35",
         "postprocessing": "6.34.1",
         "three": "^0.160.1",
         "tunnel-rat": "^0.1.2"
-    },
-    "exports": {
-        ".": {
-            "import": "./dist/index.es.js",
-            "require": "./dist/index.umd.js"
-        }
     },
     "files": [
         "dist"
@@ -70,12 +74,6 @@
         "shaders",
         "glsl"
     ],
-    "scripts": {
-        "dev": "vite",
-        "build": "tsc && vite build",
-        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-        "preview": "vite preview"
-    },
     "bugs": {
         "url": "https://github.com/whatisjery/react-fluid-distortion/issues"
     },

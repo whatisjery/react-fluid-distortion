@@ -10,16 +10,18 @@
         "moduleResolution": "Node",
         "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
+        "esModuleInterop": true,
         "isolatedModules": true,
+        "declarationMap": true,
         "noEmit": true,
-        "noEmitOnError": true,
         "jsx": "react-jsx",
         "baseUrl": ".",
         "paths": {
             "@/*": ["src/*"],
-            "react-library": ["lib/index.ts"]
+            "index": ["lib/index.ts"]
         },
-        "typeRoots": ["node_modules/@types", "lib/index.d.ts"],
+
+        "typeRoots": ["node_modules/@types", "lib/dist/index.d.ts"],
         "types": ["node"],
         "strict": true,
         "noUnusedLocals": true,
@@ -28,6 +30,6 @@
         "declaration": true
     },
 
-    "include": ["src", "**/*.ts", "**/*.tsx", "src"],
+    "include": ["src", "**/*.ts", "**/*.tsx", "lib"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,12 +1,13 @@
 import * as path from 'path';
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
+import tsConfigPaths from 'vite-tsconfig-paths';
 import react from '@vitejs/plugin-react';
 import glsl from 'vite-plugin-glsl';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-    plugins: [react(), glsl(), dts({ include: 'lib' })],
+    plugins: [react(), glsl(), dts({ include: 'lib', insertTypesEntry: true }), tsConfigPaths()],
 
     resolve: {
         alias: [
@@ -20,7 +21,7 @@ export default defineConfig({
         lib: {
             // eslint-disable-next-line no-undef
             entry: path.resolve(__dirname, 'lib/index.ts'),
-            name: 'react-fluid-distortion',
+            name: 'reactFluidDistortion',
             formats: ['es', 'umd'],
             fileName: (format) => `index.${format}.js`,
         },

@@ -14,9 +14,6 @@ dependencies:
   '@react-three/postprocessing':
     specifier: ^2.15.13
     version: 2.15.13(@react-three/fiber@8.15.16)(@types/three@0.160.0)(react@18.2.0)(three@0.160.1)
-  '@whatisjery/react-fluid-distortion':
-    specifier: ^1.0.0
-    version: 1.0.0(@react-three/drei@9.97.0)(@react-three/fiber@8.15.16)(@types/react@18.2.55)(@types/three@0.160.0)(leva@0.9.35)(postprocessing@6.34.1)(react-dom@18.2.0)(react@18.2.0)(three@0.160.1)
   leva:
     specifier: ^0.9.35
     version: 0.9.35(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
@@ -82,6 +79,9 @@ devDependencies:
   vite-plugin-glsl:
     specifier: ^1.2.1
     version: 1.2.1(vite@5.1.1)
+  vite-tsconfig-paths:
+    specifier: ^4.3.1
+    version: 4.3.1(typescript@5.3.3)(vite@5.1.1)
 
 packages:
 
@@ -1471,8 +1471,8 @@ packages:
   /@types/scheduler@0.16.8:
     resolution: {integrity: sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==}
 
-  /@types/semver@7.5.6:
-    resolution: {integrity: sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==}
+  /@types/semver@7.5.7:
+    resolution: {integrity: sha512-/wdoPq1QqkSj9/QOeKkFquEuPzQbHTWAMPH/PaUMB+JuR31lXhlWXRZ52IpfDYVlDOUBvX09uBrPwxGT1hjNBg==}
     dev: true
 
   /@types/stats.js@0.17.3:
@@ -1602,7 +1602,7 @@ packages:
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.56.0)
       '@types/json-schema': 7.0.15
-      '@types/semver': 7.5.6
+      '@types/semver': 7.5.7
       '@typescript-eslint/scope-manager': 6.21.0
       '@typescript-eslint/types': 6.21.0
       '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.3.3)
@@ -1713,32 +1713,6 @@ packages:
   /@vue/shared@3.4.18:
     resolution: {integrity: sha512-CxouGFxxaW5r1WbrSmWwck3No58rApXgRSBxrqgnY1K+jk20F6DrXJkHdH9n4HVT+/B6G2CAn213Uq3npWiy8Q==}
     dev: true
-
-  /@whatisjery/react-fluid-distortion@1.0.0(@react-three/drei@9.97.0)(@react-three/fiber@8.15.16)(@types/react@18.2.55)(@types/three@0.160.0)(leva@0.9.35)(postprocessing@6.34.1)(react-dom@18.2.0)(react@18.2.0)(three@0.160.1):
-    resolution: {integrity: sha512-Jqd37lTKXcWQzOpxrAOGCP8Rok2zjdVIWhky02TDGGB4eCTRppsnMauhmBXniHBR8ydjkoeT0AGuzbKVR7eJ9g==}
-    peerDependencies:
-      '@react-three/drei': 9.97.0
-      '@react-three/fiber': ^8.15.16
-      leva: ^0.9.35
-      postprocessing: 6.34.1
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      three: ^0.160.1
-    dependencies:
-      '@react-three/drei': 9.97.0(@react-three/fiber@8.15.16)(@types/react@18.2.55)(@types/three@0.160.0)(react-dom@18.2.0)(react@18.2.0)(three@0.160.1)
-      '@react-three/fiber': 8.15.16(react-dom@18.2.0)(react@18.2.0)(three@0.160.1)
-      '@react-three/postprocessing': 2.15.13(@react-three/fiber@8.15.16)(@types/three@0.160.0)(react@18.2.0)(three@0.160.1)
-      leva: 0.9.35(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
-      postprocessing: 6.34.1(three@0.160.1)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      three: 0.160.1
-      tunnel-rat: 0.1.2(@types/react@18.2.55)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - '@types/three'
-      - immer
-    dev: false
 
   /acorn-jsx@5.3.2(acorn@8.11.3):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2359,6 +2333,10 @@ packages:
       ignore: 5.3.1
       merge2: 1.4.1
       slash: 3.0.0
+    dev: true
+
+  /globrex@0.1.2:
+    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
 
   /glsl-noise@0.0.0:
@@ -3236,6 +3214,19 @@ packages:
       typescript: 5.3.3
     dev: true
 
+  /tsconfck@3.0.2(typescript@5.3.3):
+    resolution: {integrity: sha512-6lWtFjwuhS3XI4HsX4Zg0izOI3FU/AI9EGVlPEUMDIhvLPMD4wkiof0WCoDgW7qY+Dy198g4d9miAqUHWHFH6Q==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    peerDependencies:
+      typescript: ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.3.3
+    dev: true
+
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: false
@@ -3355,6 +3346,23 @@ packages:
       vite: 5.1.1(@types/node@20.11.17)
     transitivePeerDependencies:
       - rollup
+    dev: true
+
+  /vite-tsconfig-paths@4.3.1(typescript@5.3.3)(vite@5.1.1):
+    resolution: {integrity: sha512-cfgJwcGOsIxXOLU/nELPny2/LUD/lcf1IbfyeKTv2bsupVbTH/xpFtdQlBmIP1GEK2CjjLxYhFfB+QODFAx5aw==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      tsconfck: 3.0.2(typescript@5.3.3)
+      vite: 5.1.1(@types/node@20.11.17)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /vite@5.1.1(@types/node@20.11.17):
