@@ -4,6 +4,12 @@
 
 Post-processing for fluid distortion effect, based on the shaders developed by [Pavel Dobryakov](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation) adapted to work with [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction).
 
+## Try it :
+
+[Live preview](https://cvdt72-5173.csb.app/)
+
+[codesandbox](https://codesandbox.io/p/github/whatisjery/react-fluid-distortion/main)
+
 ## Installation :
 
 ```bash
