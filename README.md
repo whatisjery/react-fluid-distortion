@@ -14,32 +14,57 @@ Post-processing for fluid distortion effect, based on the shaders developed by [
 npm install @whatisjery/react-fluid-distortion @react-three/drei postprocessing leva
 ```
 
-The required dependencies for it to work are [postprocessing](https://github.com/pmndrs/postprocessing), [drei](https://github.com/pmndrs/drei) and optionally [leva](https://github.com/pmndrs/leva) if you intend to use the `useConfig`hooks to show the debug panel.
+-   The required dependencies for it to work are [postprocessing](https://github.com/pmndrs/postprocessing) ant [drei](https://github.com/pmndrs/drei). <br>
+-   If you want to use the debug panel you also need to install [leva](https://github.com/pmndrs/leva).
 
-## Usage :
+## Example of use :
 
 ```jsx
 import { EffectComposer } from '@react-three/postprocessing';
+import { Canvas } from '@react-three/fiber';
 import { Fluid } from '@/index';
 
-<EffectComposer>
-    <Fluid />
-</EffectComposer>;
+<Canvas
+    style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        height: '100vh',
+        width: '100vw',
+        background: '#000000',
+    }}>
+    <EffectComposer>
+        <Fluid />
+        {... other effets}
+    </EffectComposer>
+</Canvas>;
 ```
 
-## Debug pannel :
+## Example of use with debug panel :
 
 Show a debug panel to test options more easily.
 
 ```jsx
 import { EffectComposer } from '@react-three/postprocessing';
+import { Canvas } from '@react-three/fiber';
 import { Fluid, useConfig } from '@/index';
 
 const config = useConfig();
 
-<EffectComposer>
-    <Fluid {...config} />
-</EffectComposer>;
+<Canvas
+    style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        height: '100vh',
+        width: '100vw',
+        background: '#000000',
+    }}>
+    <EffectComposer>
+        <Fluid {...config} />
+        {... other effets}
+    </EffectComposer>
+</Canvas>;
 ```
 
 ## Options :
