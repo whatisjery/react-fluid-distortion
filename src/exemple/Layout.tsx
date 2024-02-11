@@ -13,6 +13,7 @@ const Layout = () => {
                 <nav className='nav'>
                     <Link to='/'>exemple1</Link>
                     <Link to='/exemple2'>exemple2</Link>
+                    <Link to='/exemple3'>exemple3</Link>
                 </nav>
             </div>
 

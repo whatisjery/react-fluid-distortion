@@ -21,7 +21,6 @@ const Exemple1 = () => {
     return (
         <ThreeTunnel.In>
             <Text />
-
             <Image />
 
             <EffectComposer>

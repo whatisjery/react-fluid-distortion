@@ -42,7 +42,6 @@ const Exemple2 = () => {
     return (
         <ThreeTunnel.In>
             <Text />
-
             <Torus />
 
             <EffectComposer>
