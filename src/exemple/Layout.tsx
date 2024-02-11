@@ -1,11 +1,14 @@
 import { Link, Outlet } from 'react-router-dom';
 import Canvas from './Canvas';
+import Github from '@/assets/github-mark-white.svg';
 
 const Layout = () => {
     return (
         <>
             <div className='layout'>
-                <div className='title'>react three fiber</div>
+                <a target='_blank' href='https://github.com/whatisjery/post-fluid-distortion'>
+                    <img className='icon' src={Github} alt='icon' />
+                </a>
 
                 <nav className='nav'>
                     <Link to='/'>exemple1</Link>

@@ -39,3 +39,7 @@ canvas {
     position: relative;
     text-transform: uppercase;
 }
+
+.icon {
+    width: 1.7rem;
+}
