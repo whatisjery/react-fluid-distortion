@@ -14,6 +14,14 @@ Post-processing for fluid distortion effect, based on the shaders developed by [
 npm install @whatisjery/react-fluid-distortion @react-three/drei postprocessing leva
 ```
 
+```bash
+yarn add @whatisjery/react-fluid-distortion @react-three/drei postprocessing leva
+```
+
+```bash
+pnpm add @whatisjery/react-fluid-distortion @react-three/drei postprocessing leva
+```
+
 -   The required dependencies for it to work are [postprocessing](https://github.com/pmndrs/postprocessing) and [drei](https://github.com/pmndrs/drei). <br>
 -   If you want to use the debug panel you also need to install [leva](https://github.com/pmndrs/leva).
 
