@@ -1,3 +1,5 @@
+[![Version](https://img.shields.io/npm/v/@whatisjery/react-fluid-distortion?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/@whatisjery/react-fluid-distortion)
+
 # Fluid Distortion for React Three Fiber
 
 ![screen capture](./src/assets/screen_capture.png)
