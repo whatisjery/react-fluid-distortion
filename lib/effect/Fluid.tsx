@@ -1,10 +1,10 @@
-import { Texture, Uniform, Vector3 } from 'three';
-import { forwardRef, useEffect, useMemo } from 'react';
 import { Effect } from 'postprocessing';
+import { forwardRef, useEffect, useMemo } from 'react';
+import { Texture, Uniform, Vector3 } from 'three';
 import { hexToRgb } from '../utils/colors';
 import { TypeEffectProps } from '../utils/types';
 
-import fragmentShader from '../glsl/post.glsl';
+import fragmentShader from '../glsl/post.frag';
 
 type TypeUniformValues = {
     tFluid: Texture | null;
@@ -24,15 +24,15 @@ export default class FluidEffect extends Effect {
 
     constructor(props: TypeEffectProps = {}) {
         const uniforms: Record<keyof TypeUniformValues, Uniform> = {
-            tFluid: new Uniform(props.tFluid ?? null),
-            uDistort: new Uniform(props.distortion ?? 0),
-            uRainbow: new Uniform(props.rainbow ?? false),
-            uIntensity: new Uniform(props.intensity ?? 0),
-            uBlend: new Uniform(props.blend ?? 0),
-            uShowBackground: new Uniform(props.showBackground ?? false),
+            tFluid: new Uniform(props.tFluid),
+            uDistort: new Uniform(props.distortion),
+            uRainbow: new Uniform(props.rainbow),
+            uIntensity: new Uniform(props.intensity),
+            uBlend: new Uniform(props.blend),
+            uShowBackground: new Uniform(props.showBackground),
 
-            uColor: new Uniform(hexToRgb(props.fluidColor ?? '')),
-            uBackgroundColor: new Uniform(hexToRgb(props.backgroundColor ?? '')),
+            uColor: new Uniform(hexToRgb(props.fluidColor!)),
+            uBackgroundColor: new Uniform(hexToRgb(props.backgroundColor!)),
         };
 
         super('FluidEffect', fragmentShader, { uniforms: new Map(Object.entries(uniforms)) });

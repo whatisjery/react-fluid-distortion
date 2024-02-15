@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 
-import { useDoubleFBO } from '../hooks/useDoubleFBO';
 import { useFBO } from '@react-three/drei';
 import { useEffect, useMemo } from 'react';
+import { useDoubleFBO } from '../hooks/useDoubleFBO';
 import { opts } from '../utils/options';
 
 export const useFBOs = () => {

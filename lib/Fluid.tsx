@@ -1,14 +1,14 @@
-import { useCallback, useMemo, useRef } from 'react';
 import { ThreeEvent, createPortal, useFrame, useThree } from '@react-three/fiber';
-import { Camera, Mesh, Scene, Vector2, Vector3, Texture, Color } from 'three';
+import { useCallback, useMemo, useRef } from 'react';
+import { Camera, Color, Mesh, Scene, Texture, Vector2, Vector3 } from 'three';
+import { ShaderPass } from 'three/examples/jsm/Addons.js';
+import { Fluid as FluidEffect } from './effect/Fluid';
 import { useFBOs } from './hooks/useFBOs';
 import { useMaterials } from './hooks/useMaterials';
-import { ShaderPass } from 'three/examples/jsm/Addons.js';
-import { TypeProps } from './utils/types';
 import { opts } from './utils/options';
-import { Fluid as FluidEffect } from './effect/Fluid';
+import { TypeProps } from './utils/types';
 
-interface TypeUniforms {
+type TypeUniforms = {
     uColor: Vector3 | Color;
     uPointer: Vector2;
 
@@ -24,7 +24,7 @@ interface TypeUniforms {
     uClearValue: number;
     uCurlValue: number;
     uDissipation: number;
-}
+};
 
 type TypeSplatStack = {
     mouseX?: number;
