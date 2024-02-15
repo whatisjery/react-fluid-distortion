@@ -38,14 +38,15 @@ const Torus = () => {
 };
 
 const Exemple2 = () => {
-    const config = useConfig();
+    const { ...config } = useConfig();
+
     return (
         <ThreeTunnel.In>
             <Text />
             <Torus />
 
             <EffectComposer>
-                <Fluid {...config} />
+                <Fluid {...config} rainbow={true} />
             </EffectComposer>
         </ThreeTunnel.In>
     );

@@ -8,7 +8,7 @@ export const opts = {
     swirl: 4,
 
     pressure: 0.8,
-    densityDissipation: 0.99,
+    densityDissipation: 0.96,
     velocityDissipation: 1.0,
 
     fluidColor: '#3300ff',
