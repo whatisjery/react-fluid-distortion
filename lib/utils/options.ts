@@ -14,7 +14,7 @@ export const opts = {
     fluidColor: '#3300ff',
     backgroundColor: '#070410',
 
-    showBackground: false,
+    showBackground: true,
     rainbow: false,
 
     dyeRes: 512,
