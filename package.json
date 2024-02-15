@@ -52,6 +52,7 @@
         "@react-three/drei": "^9.97.5",
         "@react-three/fiber": "^8.15.16",
         "@react-three/postprocessing": "^2.16.0",
+        "clang-format": "^1.8.0",
         "leva": "^0.9.35",
         "postprocessing": "6.34.1",
         "three": "^0.160.1",
