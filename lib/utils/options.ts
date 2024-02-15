@@ -1,21 +1,21 @@
 export const opts = {
     blend: 5,
-    intensity: 10,
-    force: 2,
-    distortion: 1,
-    curl: 10,
+    intensity: 2,
+    force: 1.1,
+    distortion: 0.4,
+    curl: 1.9,
     radius: 0.3,
-    swirl: 20,
+    swirl: 4,
 
     pressure: 0.8,
-    densityDissipation: 0.95,
-    velocityDissipation: 0.98,
+    densityDissipation: 0.99,
+    velocityDissipation: 1.0,
 
-    fluidColor: '#005eff',
+    fluidColor: '#3300ff',
     backgroundColor: '#070410',
 
     showBackground: false,
-    rainbow: true,
+    rainbow: false,
 
     dyeRes: 512,
     simRes: 128,
