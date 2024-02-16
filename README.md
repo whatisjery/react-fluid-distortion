@@ -4,7 +4,8 @@
 
 ![screen capture](./src/assets/screen_capture.png)
 
-Post-processing for fluid distortion effect, based on the shaders developed by [Pavel Dobryakov](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation) adapted to work with [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction).
+Implementing post-processing fluid distortion effects in response to cursor interactions for React-Three-Fiber.
+Based on the shaders developed by [Pavel Dobryakov](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation)
 
 ## Try it :
 
