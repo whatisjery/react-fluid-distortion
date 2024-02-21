@@ -5,7 +5,7 @@ import { hexToRgb } from '../utils';
 
 import fragmentShader from '../glsl/post.frag';
 
-type UniformsTypes = {
+type Uniforms = {
     tFluid: Texture | null;
     uColor: Vector3;
     uBackgroundColor: Vector3;
@@ -20,7 +20,7 @@ export class FluidEffect extends Effect {
     state: Partial<EffectProps>;
 
     constructor(props: EffectProps = {}) {
-        const uniforms: Record<keyof UniformsTypes, Uniform> = {
+        const uniforms: Record<keyof Uniforms, Uniform> = {
             tFluid: new Uniform(props.tFluid),
             uDistort: new Uniform(props.distortion),
             uRainbow: new Uniform(props.rainbow),
@@ -39,7 +39,7 @@ export class FluidEffect extends Effect {
         };
     }
 
-    private updateUniform<K extends keyof UniformsTypes>(key: K, value: UniformsTypes[K]) {
+    private updateUniform<K extends keyof Uniforms>(key: K, value: Uniforms[K]) {
         const uniform = this.uniforms.get(key);
         if (uniform) {
             uniform.value = value;
