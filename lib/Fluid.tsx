@@ -1,17 +1,17 @@
-import { ThreeEvent, createPortal, useFrame, useThree } from '@react-three/fiber';
+import { createPortal, useFrame, useThree } from '@react-three/fiber';
 import { useCallback, useMemo, useRef } from 'react';
 import { Camera, Color, Mesh, Scene, Texture, Vector2, Vector3 } from 'three';
 import { ShaderPass } from 'three/examples/jsm/Addons.js';
-import { Fluid as FluidEffect } from './effect/Fluid';
+import { Effect as FluidEffect } from './effect/Fluid';
 import { useFBOs } from './hooks/useFBOs';
 import { useMaterials } from './hooks/useMaterials';
-import { opts } from './utils/options';
-import { TypeProps } from './utils/types';
+import { Props } from './types';
+import { opts } from './constant';
+import { usePointer } from './hooks/usePointer';
 
-type TypeUniforms = {
+type Uniforms = {
     uColor: Vector3 | Color;
     uPointer: Vector2;
-
     uTarget: Texture | null;
     uVelocity: Texture;
     uCurl: Texture;
@@ -19,18 +19,10 @@ type TypeUniforms = {
     uPressure: Texture;
     uDivergence: Texture;
     uSource: Texture;
-
     uRadius: number;
     uClearValue: number;
     uCurlValue: number;
     uDissipation: number;
-};
-
-type TypeSplatStack = {
-    mouseX?: number;
-    mouseY?: number;
-    velocityX?: number;
-    velocityY?: number;
 };
 
 export const Fluid = ({
@@ -48,7 +40,7 @@ export const Fluid = ({
     pressure = opts.pressure,
     densityDissipation = opts.densityDissipation,
     velocityDissipation = opts.velocityDissipation,
-}: TypeProps) => {
+}: Props) => {
     const size = useThree((three) => three.size);
     const gl = useThree((three) => three.gl);
 
@@ -57,37 +49,10 @@ export const Fluid = ({
 
     const meshRef = useRef<Mesh>(null);
     const postRef = useRef<ShaderPass>(null);
-    const splatStack: TypeSplatStack[] = useRef([]).current;
-
-    const lastMouse = useRef<Vector2>(new Vector2());
-    const hasMoved = useRef<boolean>(false);
 
     const FBOs = useFBOs();
     const materials = useMaterials();
-
-    const onPointerMove = useCallback(
-        (event: ThreeEvent<PointerEvent>) => {
-            const deltaX = event.x - lastMouse.current.x;
-            const deltaY = event.y - lastMouse.current.y;
-
-            if (!hasMoved.current) {
-                hasMoved.current = true;
-                lastMouse.current.set(event.x, event.y);
-            }
-
-            lastMouse.current.set(event.x, event.y);
-
-            if (!hasMoved.current) return;
-
-            splatStack.push({
-                mouseX: event.x / size.width,
-                mouseY: 1.0 - event.y / size.height,
-                velocityX: deltaX * force,
-                velocityY: -deltaY * force,
-            });
-        },
-        [force, size.height, size.width, splatStack],
-    );
+    const { onPointerMove, splatStack } = usePointer({ force });
 
     const setShaderMaterial = useCallback(
         (name: keyof ReturnType<typeof useMaterials>) => {
@@ -118,12 +83,13 @@ export const Fluid = ({
     );
 
     const setUniforms = useCallback(
-        <K extends keyof TypeUniforms>(
+        <K extends keyof Uniforms>(
             material: keyof ReturnType<typeof useMaterials>,
             uniform: K,
-            value: TypeUniforms[K],
+            value: Uniforms[K],
         ) => {
             const mat = materials[material];
+
             if (mat && mat.uniforms[uniform]) {
                 mat.uniforms[uniform].value = value;
             }

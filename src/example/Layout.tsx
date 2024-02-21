@@ -11,9 +11,9 @@ const Layout = () => {
                 </a>
 
                 <nav className='nav'>
-                    <Link to='/'>exemple1</Link>
-                    <Link to='/exemple2'>exemple2</Link>
-                    <Link to='/exemple3'>exemple3</Link>
+                    <Link to='/'>example 1</Link>
+                    <Link to='/example2'>example 2</Link>
+                    <Link to='/example3'>example 3</Link>
                 </nav>
             </div>
 

@@ -1,6 +1,6 @@
-import { Fluid } from '../../lib';
-import { EffectComposer } from '@react-three/postprocessing';
 import { useTexture } from '@react-three/drei';
+import { EffectComposer } from '@react-three/postprocessing';
+import { Fluid } from '../../lib';
 import { ThreeTunnel } from './tunel';
 
 import img from '@/assets/img2.jpg';
@@ -18,12 +18,11 @@ const Image = () => {
     );
 };
 
-const Exemple3 = () => {
+const Example3 = () => {
     return (
         <ThreeTunnel.In>
             <Text />
             <Image />
-
             <EffectComposer>
                 <Fluid
                     radius={0.03}
@@ -46,4 +45,4 @@ const Exemple3 = () => {
     );
 };
 
-export default Exemple3;
+export default Example3;

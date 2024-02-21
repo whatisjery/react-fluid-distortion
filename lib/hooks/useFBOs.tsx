@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { useFBO } from '@react-three/drei';
 import { useEffect, useMemo } from 'react';
 import { useDoubleFBO } from '../hooks/useDoubleFBO';
-import { opts } from '../utils/options';
+import { opts } from '../constant';
 
 export const useFBOs = () => {
     const density = useDoubleFBO(opts.dyeRes, opts.dyeRes, {

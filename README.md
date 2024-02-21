@@ -82,7 +82,7 @@ const config = useConfig();
 
 | Name                   | Type    | Default Value | Description                                                                                    |
 | ---------------------- | ------- | ------------- | ---------------------------------------------------------------------------------------------- |
-| `fluidColor`           | string  | `#005eff`     | Sets the fluid color. Effective only when `rainbow` is set to `false`.                         |
+| `fluidColor`           | hexadecimal  | `#005eff`     | Sets the fluid color. Effective only when `rainbow` is set to `false`.                         |
 | `backgroundColor`      | string  | `#070410`     | Sets the background color. Effective only when `showBackground` is `true`.                     |
 | `showBackground`       | boolean | `false`       | Toggles the background color's visibility. If `false` it becomes transprent.                   |
 | `blend`                | number  | `5`           | Blends fluid into the scene when `showBackground` is true. Valid range: `0.00` to `10.0`.      |

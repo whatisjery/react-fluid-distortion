@@ -1,9 +1,9 @@
+import { Environment, MeshTransmissionMaterial } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+import { EffectComposer } from '@react-three/postprocessing';
 import { useRef } from 'react';
 import { Mesh } from 'three';
-import { useFrame } from '@react-three/fiber';
 import { Fluid, useConfig } from '../../lib';
-import { EffectComposer } from '@react-three/postprocessing';
-import { Environment, MeshTransmissionMaterial } from '@react-three/drei';
 import { ThreeTunnel } from './tunel';
 
 import Text from './Text';
@@ -37,7 +37,7 @@ const Torus = () => {
     );
 };
 
-const Exemple2 = () => {
+const Example2 = () => {
     const { ...config } = useConfig();
 
     return (
@@ -52,4 +52,4 @@ const Exemple2 = () => {
     );
 };
 
-export default Exemple2;
+export default Example2;

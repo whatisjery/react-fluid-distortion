@@ -1,3 +1,4 @@
-export type { TypeProps } from './utils/types';
+export type { Props } from './types';
+
 export { Fluid } from './Fluid';
 export { useConfig } from './hooks/useConfig';

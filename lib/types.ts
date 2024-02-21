@@ -1,6 +1,6 @@
 import { Texture } from 'three';
 
-export type TypeCommonProps = {
+export type SharedProps = {
     blend?: number;
     intensity?: number;
     distortion?: number;
@@ -10,7 +10,7 @@ export type TypeCommonProps = {
     showBackground?: boolean;
 };
 
-export type TypeProps = TypeCommonProps & {
+export type Props = SharedProps & {
     densityDissipation?: number;
     pressure?: number;
     velocityDissipation?: number;
@@ -20,6 +20,6 @@ export type TypeProps = TypeCommonProps & {
     swirl?: number;
 };
 
-export type TypeEffectProps = TypeCommonProps & {
+export type EffectProps = SharedProps & {
     tFluid?: Texture;
 };

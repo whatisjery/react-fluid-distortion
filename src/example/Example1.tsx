@@ -1,6 +1,6 @@
-import { Fluid } from '../../lib/Fluid';
-import { EffectComposer } from '@react-three/postprocessing';
 import { useTexture } from '@react-three/drei';
+import { EffectComposer } from '@react-three/postprocessing';
+import { Fluid } from '../../lib/Fluid';
 import { ThreeTunnel } from './tunel';
 
 import img from '@/assets/img.jpg';
@@ -17,12 +17,11 @@ const Image = () => {
     );
 };
 
-const Exemple1 = () => {
+const Example1 = () => {
     return (
         <ThreeTunnel.In>
             <Text />
             <Image />
-
             <EffectComposer>
                 <Fluid />
             </EffectComposer>
@@ -30,4 +29,4 @@ const Exemple1 = () => {
     );
 };
 
-export default Exemple1;
+export default Example1;

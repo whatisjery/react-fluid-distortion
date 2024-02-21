@@ -3,7 +3,7 @@
 import { ShaderMaterial, Texture, Vector2, Vector3 } from 'three';
 import { useEffect, useMemo } from 'react';
 import { useThree } from '@react-three/fiber';
-import { opts } from '../utils/options';
+import { opts } from '../constant';
 
 import baseVertex from '../glsl/base.vert';
 import clearFrag from '../glsl/clear.frag';
@@ -169,11 +169,8 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
             const aspectRatio = size.width / (size.height + 400);
 
             material.uniforms.texelSize.value.set(1 / (opts.simRes * aspectRatio), 1 / opts.simRes);
-
             material.vertexShader = baseVertex;
-
             material.depthTest = false;
-
             material.depthWrite = false;
         }
 
