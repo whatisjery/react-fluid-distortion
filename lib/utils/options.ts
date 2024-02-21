@@ -1,4 +1,4 @@
-export const opts = {
+export const OPTS = {
     blend: 5,
     intensity: 2,
     force: 1.1,

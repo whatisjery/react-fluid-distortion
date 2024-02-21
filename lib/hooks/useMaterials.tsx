@@ -3,7 +3,7 @@
 import { ShaderMaterial, Texture, Vector2, Vector3 } from 'three';
 import { useEffect, useMemo } from 'react';
 import { useThree } from '@react-three/fiber';
-import { opts } from '../constant';
+import { OPTS } from '../constant';
 
 import baseVertex from '../glsl/base.vert';
 import clearFrag from '../glsl/clear.frag';
@@ -44,7 +44,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Texture(),
                 },
                 uClearValue: {
-                    value: opts.pressure,
+                    value: OPTS.pressure,
                 },
                 texelSize: {
                     value: new Vector2(),
@@ -122,7 +122,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Vector2(),
                 },
                 uRadius: {
-                    value: opts.radius / 100.0,
+                    value: OPTS.radius / 100.0,
                 },
                 texelSize: {
                     value: new Vector2(),
@@ -140,7 +140,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Texture(),
                 },
                 uCurlValue: {
-                    value: opts.curl,
+                    value: OPTS.curl,
                 },
                 dt: {
                     value: 0.016,
@@ -168,7 +168,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
         for (const material of Object.values(shaderMaterials)) {
             const aspectRatio = size.width / (size.height + 400);
 
-            material.uniforms.texelSize.value.set(1 / (opts.simRes * aspectRatio), 1 / opts.simRes);
+            material.uniforms.texelSize.value.set(1 / (OPTS.simRes * aspectRatio), 1 / OPTS.simRes);
             material.vertexShader = baseVertex;
             material.depthTest = false;
             material.depthWrite = false;

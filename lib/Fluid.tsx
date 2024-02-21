@@ -6,7 +6,7 @@ import { Effect as FluidEffect } from './effect/Fluid';
 import { useFBOs } from './hooks/useFBOs';
 import { useMaterials } from './hooks/useMaterials';
 import { Props } from './types';
-import { opts } from './constant';
+import { OPTS } from './constant';
 import { usePointer } from './hooks/usePointer';
 
 type Uniforms = {
@@ -26,20 +26,20 @@ type Uniforms = {
 };
 
 export const Fluid = ({
-    blend = opts.blend,
-    force = opts.force,
-    radius = opts.radius,
-    curl = opts.curl,
-    swirl = opts.swirl,
-    intensity = opts.intensity,
-    distortion = opts.distortion,
-    fluidColor = opts.fluidColor,
-    backgroundColor = opts.backgroundColor,
-    showBackground = opts.showBackground,
-    rainbow = opts.rainbow,
-    pressure = opts.pressure,
-    densityDissipation = opts.densityDissipation,
-    velocityDissipation = opts.velocityDissipation,
+    blend = OPTS.blend,
+    force = OPTS.force,
+    radius = OPTS.radius,
+    curl = OPTS.curl,
+    swirl = OPTS.swirl,
+    intensity = OPTS.intensity,
+    distortion = OPTS.distortion,
+    fluidColor = OPTS.fluidColor,
+    backgroundColor = OPTS.backgroundColor,
+    showBackground = OPTS.showBackground,
+    rainbow = OPTS.rainbow,
+    pressure = OPTS.pressure,
+    densityDissipation = OPTS.densityDissipation,
+    velocityDissipation = OPTS.velocityDissipation,
 }: Props) => {
     const size = useThree((three) => three.size);
     const gl = useThree((three) => three.gl);
