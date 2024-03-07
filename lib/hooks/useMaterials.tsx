@@ -1,5 +1,3 @@
-'use client';
-
 import { ShaderMaterial, Texture, Vector2, Vector3 } from 'three';
 import { useEffect, useMemo } from 'react';
 import { useThree } from '@react-three/fiber';
