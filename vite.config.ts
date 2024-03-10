@@ -28,7 +28,6 @@ export default defineConfig({
         rollupOptions: {
             external: [
                 'react',
-                'react-dom',
                 '@react-three/fiber',
                 '@react-three/drei',
                 'three',
@@ -38,7 +37,6 @@ export default defineConfig({
             output: {
                 globals: {
                     react: 'React',
-                    'react-dom': 'ReactDOM',
                     '@react-three/fiber': 'reactThreeFiber',
                     '@react-three/drei': 'drei',
                     three: 'THREE',

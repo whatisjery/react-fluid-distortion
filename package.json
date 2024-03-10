@@ -20,10 +20,9 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@react-three/drei": "*",
         "@react-three/fiber": "*",
         "leva": "*",
-        "postprocessing": "<=6.34.1",
+        "postprocessing": "*",
         "react": "*",
         "react-dom": "*",
         "three": "*"
@@ -48,15 +47,13 @@
         "vite": "^5.1.5",
         "vite-plugin-dts": "^3.7.3",
         "vite-plugin-glsl": "^1.2.1",
-        "vite-tsconfig-paths": "^4.3.1"
-    },
-    "dependencies": {
-        "@react-three/drei": "^9.99.7",
-        "@react-three/fiber": "^8.15.19",
-        "@react-three/postprocessing": "^2.16.2",
-        "leva": "^0.9.35",
+        "vite-tsconfig-paths": "^4.3.1",
         "postprocessing": "6.34.1",
-        "three": "^0.160.1"
+        "leva": "^0.9.35",
+        "three": "^0.160.1",
+        "@react-three/postprocessing": "^2.16.2",
+        "@react-three/drei": "^9.101.0",
+        "@react-three/fiber": "^8.15.19"
     },
     "files": [
         "dist"
