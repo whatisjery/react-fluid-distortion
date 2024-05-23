@@ -4,6 +4,7 @@ import { Fluid } from '../../lib/Fluid';
 import { ThreeTunnel } from './tunel';
 
 import img from '@/assets/img.jpg';
+import { useEffect, useState } from 'react';
 import Text from './Text';
 
 const Image = () => {
@@ -18,12 +19,19 @@ const Image = () => {
 };
 
 const Example1 = () => {
+    const [ref, setRef] = useState<any>(null);
+    useEffect(() => {
+        document.addEventListener('pointermove', ref?.onPointerMove);
+        return () => {
+            document.removeEventListener('pointermove', ref?.onPointerMove);
+        };
+    }, [ref]);
     return (
         <ThreeTunnel.In>
             <Text />
             <Image />
             <EffectComposer>
-                <Fluid />
+                <Fluid ref={setRef} />
             </EffectComposer>
         </ThreeTunnel.In>
     );
