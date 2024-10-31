@@ -3,13 +3,15 @@ import { EffectProps } from '../types';
 import { FluidEffect } from './FluidEffect';
 
 export const Effect = forwardRef(function Fluid(props: EffectProps, ref) {
-    const effect = useMemo(() => new FluidEffect(props), [props]);
+    // prevent re-creating the effect on every render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const effect = useMemo(() => new FluidEffect(props), []);
 
     useEffect(() => {
         return () => {
-            if (effect) effect.dispose();
+            effect.dispose?.();
         };
     }, [effect]);
 
-    return <primitive ref={ref} object={effect} />;
+    return <primitive ref={ref} object={effect} dispose={null} />;
 });
