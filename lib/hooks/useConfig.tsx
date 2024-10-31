@@ -2,6 +2,16 @@ import { useControls, button } from 'leva';
 import { OPTS } from '../constant';
 
 export const useConfig = () => {
+    const handleReset = () => {
+        return set(
+            Object.fromEntries(
+                Object.keys(params).map((key) => {
+                    return [key, OPTS[key as keyof typeof OPTS]];
+                }),
+            ),
+        );
+    };
+
     const [params, set] = useControls('Settings', () => ({
         intensity: {
             value: OPTS.intensity,
@@ -102,9 +112,7 @@ export const useConfig = () => {
             step: 0.01,
             label: 'radius',
         },
-        'reset OPTS': button(() => {
-            set({ ...OPTS });
-        }),
+        'reset settings': button(handleReset),
     }));
 
     return params;
