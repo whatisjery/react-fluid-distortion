@@ -1,3 +1,4 @@
+import { BlendFunction } from 'postprocessing';
 import { Texture } from 'three';
 
 export type SharedProps = {
@@ -8,6 +9,7 @@ export type SharedProps = {
     fluidColor?: string;
     backgroundColor?: string;
     showBackground?: boolean;
+    blendFunction?: BlendFunction;
 };
 
 export type Props = SharedProps & {

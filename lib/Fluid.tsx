@@ -8,6 +8,7 @@ import { useMaterials } from './hooks/useMaterials';
 import { Props } from './types';
 import { OPTS } from './constant';
 import { usePointer } from './hooks/usePointer';
+import { BlendFunction } from 'postprocessing';
 
 type Uniforms = {
     uColor: Vector3 | Color;
@@ -40,6 +41,7 @@ export const Fluid = ({
     pressure = OPTS.pressure,
     densityDissipation = OPTS.densityDissipation,
     velocityDissipation = OPTS.velocityDissipation,
+    blendFunction = BlendFunction.ALPHA,
 }: Props) => {
     const size = useThree((three) => three.size);
     const gl = useThree((three) => three.gl);
@@ -176,6 +178,7 @@ export const Fluid = ({
             )}
 
             <FluidEffect
+                blendFunction={blendFunction}
                 intensity={intensity * 0.0001}
                 rainbow={rainbow}
                 distortion={distortion * 0.001}
