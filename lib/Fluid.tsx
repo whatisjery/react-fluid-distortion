@@ -41,7 +41,7 @@ export const Fluid = ({
     pressure = OPTS.pressure,
     densityDissipation = OPTS.densityDissipation,
     velocityDissipation = OPTS.velocityDissipation,
-    blendFunction = BlendFunction.ALPHA,
+    blendFunction = BlendFunction.NORMAL,
 }: Props) => {
     const size = useThree((three) => three.size);
     const gl = useThree((three) => three.gl);

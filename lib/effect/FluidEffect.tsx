@@ -1,4 +1,4 @@
-import { BlendFunction, Effect } from 'postprocessing';
+import { Effect } from 'postprocessing';
 import { Texture, Uniform, Vector3 } from 'three';
 import { EffectProps } from '../types';
 import { hexToRgb } from '../utils';
@@ -33,7 +33,7 @@ export class FluidEffect extends Effect {
         };
 
         super('FluidEffect', fragmentShader, {
-            blendFunction: props.blendFunction ?? BlendFunction.ALPHA,
+            blendFunction: props.blendFunction,
             uniforms: new Map(Object.entries(uniforms)),
         });
 
