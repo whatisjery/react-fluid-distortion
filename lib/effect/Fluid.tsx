@@ -8,6 +8,11 @@ export const Effect = forwardRef(function Fluid(props: EffectProps, ref) {
     const effect = useMemo(() => new FluidEffect(props), []);
 
     useEffect(() => {
+        effect.state = { ...props };
+        effect.update();
+    }, [effect, props]);
+
+    useEffect(() => {
         return () => {
             effect.dispose?.();
         };
