@@ -70,3 +70,21 @@ const config = useConfig();
 | `densitionDissipation` | number      | `0.95`        | Reduces the fluid density over time. Valid range: `0.00` to `1.00`.                            |
 | `pressure`             | number      | `0.80`        | Controls the reduction of pressure. Valid range: `0.00` to `1.00`.                             |
 | `rainbow`              | boolean     | `true`        | Activates color mode based on mouse direction. No range applicable as this is a boolean value. |
+
+## Usage with nextjs
+
+If you're working with an older version of Next.js, you may get this type of error:
+
+```javascript
+TypeError: Cannot read properties of undefined (reading '__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED')
+```
+
+To fix it, you can enable package transpilation in your next.config file. Here’s how:
+
+```javascript
+const nextConfig = {
+    transpilePackages: ['@whatisjery/react-fluid-distortion'],
+};
+
+module.exports = nextConfig;
+```
