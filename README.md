@@ -20,7 +20,7 @@ npm install @whatisjery/react-fluid-distortion @react-three/drei @react-three/po
 ## Example of use :
 
 ```jsx
-import { Fluid } from '@/whatisjery/react-fluid-distortion';
+import { Fluid } from '@whatisjery/react-fluid-distortion';
 import { EffectComposer } from '@react-three/postprocessing';
 import { Canvas } from '@react-three/fiber';
 
