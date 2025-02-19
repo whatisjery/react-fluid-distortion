@@ -34,6 +34,9 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                 texelSize: { value: new Vector2() },
             },
             fragmentShader: advectionFrag,
+            vertexShader: baseVertex,
+            depthTest: false,
+            depthWrite: false,
         });
 
         const clear = new ShaderMaterial({
@@ -49,6 +52,9 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                 },
             },
             fragmentShader: clearFrag,
+            vertexShader: baseVertex,
+            depthTest: false,
+            depthWrite: false,
         });
 
         const curl = new ShaderMaterial({
@@ -61,6 +67,9 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                 },
             },
             fragmentShader: curlFrag,
+            vertexShader: baseVertex,
+            depthTest: false,
+            depthWrite: false,
         });
 
         const divergence = new ShaderMaterial({
@@ -73,6 +82,9 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                 },
             },
             fragmentShader: divergenceFrag,
+            vertexShader: baseVertex,
+            depthTest: false,
+            depthWrite: false,
         });
 
         const gradientSubstract = new ShaderMaterial({
@@ -88,6 +100,9 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                 },
             },
             fragmentShader: gradientSubstractFrag,
+            vertexShader: baseVertex,
+            depthTest: false,
+            depthWrite: false,
         });
 
         const pressure = new ShaderMaterial({
@@ -103,6 +118,9 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                 },
             },
             fragmentShader: pressureFrag,
+            vertexShader: baseVertex,
+            depthTest: false,
+            depthWrite: false,
         });
 
         const splat = new ShaderMaterial({
@@ -127,6 +145,9 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                 },
             },
             fragmentShader: splatFrag,
+            vertexShader: baseVertex,
+            depthTest: false,
+            depthWrite: false,
         });
 
         const vorticity = new ShaderMaterial({
@@ -148,6 +169,9 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                 },
             },
             fragmentShader: vorticityFrag,
+            vertexShader: baseVertex,
+            depthTest: false,
+            depthWrite: false,
         });
 
         return {
@@ -165,11 +189,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
     useEffect(() => {
         for (const material of Object.values(shaderMaterials)) {
             const aspectRatio = size.width / (size.height + 400);
-
             material.uniforms.texelSize.value.set(1 / (OPTS.simRes * aspectRatio), 1 / OPTS.simRes);
-            material.vertexShader = baseVertex;
-            material.depthTest = false;
-            material.depthWrite = false;
         }
 
         return () => {
