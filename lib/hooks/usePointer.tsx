@@ -25,11 +25,10 @@ export const usePointer = ({ force }: { force: number }) => {
             if (!hasMoved.current) {
                 hasMoved.current = true;
                 lastMouse.current.set(event.x, event.y);
+                return;
             }
 
             lastMouse.current.set(event.x, event.y);
-
-            if (!hasMoved.current) return;
 
             splatStack.push({
                 mouseX: event.x / size.width,
