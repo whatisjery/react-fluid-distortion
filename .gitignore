@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 *.tsbuildinfo
+.pnpm-store
 
 
 # Editor directories and files
