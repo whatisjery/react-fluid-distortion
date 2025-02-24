@@ -99,7 +99,7 @@ export const Fluid = ({
         [materials],
     );
 
-    useFrame(({ gl }) => {
+    useFrame(() => {
         if (!meshRef.current || !postRef.current) return;
 
         for (let i = splatStack.length - 1; i >= 0; i--) {
@@ -160,9 +160,6 @@ export const Fluid = ({
         setUniforms('advection', 'uDissipation', densityDissipation);
 
         setRenderTarget('density');
-
-        gl.setRenderTarget(null);
-        gl.clear();
     });
 
     return (
