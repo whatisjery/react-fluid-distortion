@@ -9,6 +9,7 @@ import { Props } from './types';
 import { OPTS } from './constant';
 import { usePointer } from './hooks/usePointer';
 import { BlendFunction } from 'postprocessing';
+import { normalizeScreenHz } from './utils';
 
 type Uniforms = {
     uColor: Vector3 | Color;
@@ -99,7 +100,7 @@ export const Fluid = ({
         [materials],
     );
 
-    useFrame(() => {
+    useFrame((_, delta) => {
         if (!meshRef.current || !postRef.current) return;
 
         for (let i = splatStack.length - 1; i >= 0; i--) {
@@ -133,7 +134,7 @@ export const Fluid = ({
 
         setShaderMaterial('clear');
         setUniforms('clear', 'uTexture', FBOs.pressure.read.texture);
-        setUniforms('clear', 'uClearValue', pressure);
+        setUniforms('clear', 'uClearValue', normalizeScreenHz(pressure, delta));
         setRenderTarget('pressure');
 
         setShaderMaterial('pressure');
@@ -152,12 +153,12 @@ export const Fluid = ({
         setShaderMaterial('advection');
         setUniforms('advection', 'uVelocity', FBOs.velocity.read.texture);
         setUniforms('advection', 'uSource', FBOs.velocity.read.texture);
-        setUniforms('advection', 'uDissipation', velocityDissipation);
+        setUniforms('advection', 'uDissipation', normalizeScreenHz(velocityDissipation, delta));
 
         setRenderTarget('velocity');
         setUniforms('advection', 'uVelocity', FBOs.velocity.read.texture);
         setUniforms('advection', 'uSource', FBOs.density.read.texture);
-        setUniforms('advection', 'uDissipation', densityDissipation);
+        setUniforms('advection', 'uDissipation', normalizeScreenHz(densityDissipation, delta));
 
         setRenderTarget('density');
     });

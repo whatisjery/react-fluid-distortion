@@ -26,7 +26,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Texture(),
                 },
                 dt: {
-                    value: 0.016,
+                    value: 1 / OPTS.refreshRate,
                 },
                 uDissipation: {
                     value: 1.0,
@@ -162,7 +162,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: OPTS.curl,
                 },
                 dt: {
-                    value: 0.016,
+                    value: 1 / OPTS.refreshRate,
                 },
                 texelSize: {
                     value: new Vector2(),
