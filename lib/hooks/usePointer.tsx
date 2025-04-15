@@ -3,10 +3,10 @@ import { useCallback, useRef } from 'react';
 import { Vector2 } from 'three';
 
 type SplatStack = {
-    mouseX?: number;
-    mouseY?: number;
-    velocityX?: number;
-    velocityY?: number;
+    mouseX: number;
+    mouseY: number;
+    velocityX: number;
+    velocityY: number;
 };
 
 export const usePointer = ({ force }: { force: number }) => {
