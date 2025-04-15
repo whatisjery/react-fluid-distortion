@@ -7,6 +7,15 @@
 Implementing post-processing fluid distortion effects in response to cursor interactions for React-Three-Fiber.
 Based on the shaders developed by [Pavel Dobryakov](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation)
 
+---
+
+From the [react-three-fiber](https://github.com/pmndrs/react-three-fiber) documentation :
+
+> [!WARNING]  
+> Three-fiber is a React renderer, it must pair with a major version of React, just like react-dom, react-native, etc. @react-three/fiber@8 pairs with react@18, @react-three/fiber@9 pairs with react@19.
+
+---
+
 ## Try it :
 
 [codesandbox](https://codesandbox.io/p/github/whatisjery/react-fluid-distortion)
