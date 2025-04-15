@@ -52,6 +52,8 @@ export const Fluid = ({
 
     const meshRef = useRef<Mesh>(null);
     const postRef = useRef<ShaderPass>(null);
+    const pointerRef = useRef(new Vector2());
+    const colorRef = useRef(new Vector3());
 
     const FBOs = useFBOs();
     const materials = useMaterials();
@@ -106,10 +108,13 @@ export const Fluid = ({
         for (let i = splatStack.length - 1; i >= 0; i--) {
             const { mouseX, mouseY, velocityX, velocityY } = splatStack[i];
 
+            pointerRef.current.set(mouseX, mouseY);
+            colorRef.current.set(velocityX, velocityY, 10.0);
+
             setShaderMaterial('splat');
             setUniforms('splat', 'uTarget', FBOs.velocity.read.texture);
-            setUniforms('splat', 'uPointer', new Vector2(mouseX, mouseY));
-            setUniforms('splat', 'uColor', new Vector3(velocityX, velocityY, 10.0));
+            setUniforms('splat', 'uPointer', pointerRef.current);
+            setUniforms('splat', 'uColor', colorRef.current);
             setUniforms('splat', 'uRadius', radius / 100.0);
             setRenderTarget('velocity');
             setUniforms('splat', 'uTarget', FBOs.density.read.texture);
@@ -177,11 +182,11 @@ export const Fluid = ({
 
             <FluidEffect
                 blendFunction={blendFunction}
-                intensity={intensity * 0.0001}
+                intensity={intensity}
                 rainbow={rainbow}
-                distortion={distortion * 0.001}
+                distortion={distortion}
                 backgroundColor={backgroundColor}
-                blend={blend * 0.01}
+                blend={blend}
                 fluidColor={fluidColor}
                 showBackground={showBackground}
                 ref={postRef}
