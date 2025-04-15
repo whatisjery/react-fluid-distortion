@@ -2,8 +2,7 @@ import { Effect } from 'postprocessing';
 import { Texture, Uniform, Vector3 } from 'three';
 import { EffectProps } from '../types';
 import { hexToRgb } from '../utils';
-
-import fragmentShader from '../glsl/post.frag';
+import compositeFrag from '../glsl/composite.frag';
 
 type Uniforms = {
     tFluid: Texture | null;
@@ -32,7 +31,7 @@ export class FluidEffect extends Effect {
             uBackgroundColor: new Uniform(hexToRgb(props.backgroundColor!)),
         };
 
-        super('FluidEffect', fragmentShader, {
+        super('FluidEffect', compositeFrag, {
             blendFunction: props.blendFunction,
             uniforms: new Map(Object.entries(uniforms)),
         });
