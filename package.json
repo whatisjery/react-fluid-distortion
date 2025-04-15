@@ -21,8 +21,9 @@
     "license": "MIT",
     "peerDependencies": {
         "@react-three/fiber": "*",
-        "leva": "*",
+        "@react-three/postprocessing": "*",
         "postprocessing": "*",
+        "leva": "*",
         "react": "*",
         "react-dom": "*",
         "three": "*"
