@@ -57,11 +57,15 @@
         "vite-tsconfig-paths": "^5.1.4"
     },
     "files": [
-        "dist"
+        "dist",
+        "lib"
     ],
     "publishConfig": {
         "access": "public"
     },
+    "include": [
+        "lib"
+    ],
     "keywords": [
         "react",
         "fluid",
