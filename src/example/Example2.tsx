@@ -1,22 +1,38 @@
 import { Environment, MeshTransmissionMaterial } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { EffectComposer } from '@react-three/postprocessing';
 import { useRef } from 'react';
 import { Mesh } from 'three';
 import { Fluid, useConfig } from '../../lib';
+import Text from './Text';
 import { ThreeTunnel } from './tunel';
 
-import Text from './Text';
-
-const Torus = () => {
+export const Torus = () => {
     const meshRef = useRef<Mesh>(null);
 
-    useFrame(() => {
+    const { camera } = useThree();
+
+    useFrame(({ clock }) => {
+        // meshRef.current.rotation.y += 0.01;
+
         if (!meshRef.current) return;
 
-        meshRef.current.rotation.y += 0.01;
-        meshRef.current.rotation.x += 0.005;
+        const time = clock.getElapsedTime();
+        const cameraRadius = 10;
+        const speed = 0.25;
+
+        // Calculate camera angle
+        const cameraAngle = time * speed; // Current angle of camera around Y axis
+
+        // Only rotate horizontally (around Y axis)
+        const cameraX = Math.sin(cameraAngle) * cameraRadius;
+        const cameraY = 0; // Fixed height
+        const cameraZ = Math.cos(cameraAngle) * cameraRadius;
+
+        camera.position.set(cameraX, cameraY, cameraZ);
+        camera.lookAt(0, 0, 0);
     });
+
     return (
         <>
             <ambientLight intensity={10.1} />
