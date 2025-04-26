@@ -52,6 +52,14 @@ export const useFBOs = () => {
     }, [curl, density, divergence, pressure, velocity]);
 
     useEffect(() => {
+        for (const FBO of Object.values(FBOs)) {
+            if ('write' in FBO) {
+                FBO.setGenerateMipmaps(false);
+            } else {
+                FBO.texture.generateMipmaps = false;
+            }
+        }
+
         return () => {
             for (const FBO of Object.values(FBOs)) {
                 FBO.dispose();
