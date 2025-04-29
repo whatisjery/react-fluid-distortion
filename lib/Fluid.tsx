@@ -1,14 +1,14 @@
 import { createPortal, useFrame, useThree } from '@react-three/fiber';
+import { BlendFunction } from 'postprocessing';
 import { useCallback, useMemo, useRef } from 'react';
 import { Camera, Color, Mesh, Scene, Texture, Vector2, Vector3 } from 'three';
 import { ShaderPass } from 'three/examples/jsm/Addons.js';
+import { OPTS } from './constant';
 import { Effect as FluidEffect } from './effect/Fluid';
 import { useFBOs } from './hooks/useFBOs';
 import { useMaterials } from './hooks/useMaterials';
-import { Props } from './types';
-import { OPTS } from './constant';
 import { usePointer } from './hooks/usePointer';
-import { BlendFunction } from 'postprocessing';
+import { Props } from './types';
 import { normalizeScreenHz } from './utils';
 
 type Uniforms = {
@@ -46,6 +46,7 @@ export const Fluid = ({
 }: Props) => {
     const size = useThree((three) => three.size);
     const gl = useThree((three) => three.gl);
+    const camera = useThree((three) => three.camera);
 
     const bufferScene = useMemo(() => new Scene(), []);
     const bufferCamera = useMemo(() => new Camera(), []);
@@ -104,6 +105,9 @@ export const Fluid = ({
 
     useFrame((_, delta) => {
         if (!meshRef.current || !postRef.current) return;
+
+        // Make the mesh face the camera
+        meshRef.current.quaternion.copy(camera.quaternion);
 
         for (let i = splatStack.length - 1; i >= 0; i--) {
             const { mouseX, mouseY, velocityX, velocityY } = splatStack[i];
