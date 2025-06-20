@@ -23,7 +23,7 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
 
     vec4 colorForFluidEffect = vec4(uRainbow == 1.0 ? fluidColor : selectedColor, 1.0);
 
-    vec4 computedBgColor = vec4(uBackgroundColor, 1.);
+    vec4 computedBgColor = uShowBackground != 0.0 ? vec4(uBackgroundColor, 1.0) : vec4(0.0, 0.0, 0.0, 0.0);
 
     outputColor = mix(texture, colorForFluidEffect, intensity);
 
