@@ -1,5 +1,6 @@
-import { ThreeEvent, useThree } from '@react-three/fiber';
-import { useCallback, useRef } from 'react';
+import { useThree } from '@react-three/fiber';
+import { useCallback, useEffect, useRef } from 'react';
+
 import { Vector2 } from 'three';
 
 type SplatStack = {
@@ -18,7 +19,7 @@ export const usePointer = ({ force }: { force: number }) => {
     const hasMoved = useRef<boolean>(false);
 
     const onPointerMove = useCallback(
-        (event: ThreeEvent<PointerEvent>) => {
+        (event: { x: number; y: number }) => {
             const deltaX = event.x - lastMouse.current.x;
             const deltaY = event.y - lastMouse.current.y;
 
@@ -30,15 +31,24 @@ export const usePointer = ({ force }: { force: number }) => {
 
             lastMouse.current.set(event.x, event.y);
 
-            splatStack.push({
+            const splatInfo = {
                 mouseX: event.x / size.width,
                 mouseY: 1.0 - event.y / size.height,
                 velocityX: deltaX * force,
                 velocityY: -deltaY * force,
-            });
+            };
+            // console.log(splatInfo.mouseX, splatInfo.mouseY)
+            splatStack.push(splatInfo);
         },
         [force, size.height, size.width, splatStack],
     );
 
-    return { onPointerMove, splatStack };
+    useEffect(() => {
+        addEventListener('pointermove', onPointerMove);
+        return () => {
+            removeEventListener('pointermove', onPointerMove);
+        };
+    }, [onPointerMove]);
+
+    return splatStack;
 };
