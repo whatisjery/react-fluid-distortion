@@ -18,6 +18,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
 
     const shaderMaterials = useMemo(() => {
         const advection = new ShaderMaterial({
+            name: 'Fluid/Advection',
             uniforms: {
                 uVelocity: {
                     value: new Texture(),
@@ -35,11 +36,15 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
             },
             fragmentShader: advectionFrag,
             vertexShader: baseVertex,
+            defines: {
+                USE_V_UV: '',
+            },
             depthTest: false,
             depthWrite: false,
         });
 
         const clear = new ShaderMaterial({
+            name: 'Fluid/Clear',
             uniforms: {
                 uTexture: {
                     value: new Texture(),
@@ -53,11 +58,15 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
             },
             fragmentShader: clearFrag,
             vertexShader: baseVertex,
+            defines: {
+                USE_V_UV: '',
+            },
             depthTest: false,
             depthWrite: false,
         });
 
         const curl = new ShaderMaterial({
+            name: 'Fluid/Curl',
             uniforms: {
                 uVelocity: {
                     value: new Texture(),
@@ -68,11 +77,15 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
             },
             fragmentShader: curlFrag,
             vertexShader: baseVertex,
+            defines: {
+                USE_OFFSETS: '',
+            },
             depthTest: false,
             depthWrite: false,
         });
 
         const divergence = new ShaderMaterial({
+            name: 'Fluid/Divergence',
             uniforms: {
                 uVelocity: {
                     value: new Texture(),
@@ -83,11 +96,16 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
             },
             fragmentShader: divergenceFrag,
             vertexShader: baseVertex,
+            defines: {
+                USE_V_UV: '',
+                USE_OFFSETS: '',
+            },
             depthTest: false,
             depthWrite: false,
         });
 
         const gradientSubstract = new ShaderMaterial({
+            name: 'Fluid/GradientSubtract',
             uniforms: {
                 uPressure: {
                     value: new Texture(),
@@ -101,11 +119,16 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
             },
             fragmentShader: gradientSubstractFrag,
             vertexShader: baseVertex,
+            defines: {
+                USE_V_UV: '',
+                USE_OFFSETS: '',
+            },
             depthTest: false,
             depthWrite: false,
         });
 
         const pressure = new ShaderMaterial({
+            name: 'Fluid/Pressure',
             uniforms: {
                 uPressure: {
                     value: new Texture(),
@@ -119,11 +142,16 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
             },
             fragmentShader: pressureFrag,
             vertexShader: baseVertex,
+            defines: {
+                USE_V_UV: '',
+                USE_OFFSETS: '',
+            },
             depthTest: false,
             depthWrite: false,
         });
 
         const splat = new ShaderMaterial({
+            name: 'Fluid/Splat',
             uniforms: {
                 uTarget: {
                     value: new Texture(),
@@ -146,11 +174,15 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
             },
             fragmentShader: splatFrag,
             vertexShader: baseVertex,
+            defines: {
+                USE_V_UV: '',
+            },
             depthTest: false,
             depthWrite: false,
         });
 
         const vorticity = new ShaderMaterial({
+            name: 'Fluid/Vorticity',
             uniforms: {
                 uVelocity: {
                     value: new Texture(),
@@ -170,6 +202,10 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
             },
             fragmentShader: vorticityFrag,
             vertexShader: baseVertex,
+            defines: {
+                USE_V_UV: '',
+                USE_OFFSETS: '',
+            },
             depthTest: false,
             depthWrite: false,
         });
