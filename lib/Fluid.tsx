@@ -57,7 +57,7 @@ export const Fluid = ({
 
     const FBOs = useFBOs();
     const materials = useMaterials();
-    const { onPointerMove, splatStack } = usePointer({ force });
+    const splatStack = usePointer({ force });
 
     const setShaderMaterial = useCallback(
         (name: keyof ReturnType<typeof useMaterials>) => {
@@ -171,11 +171,8 @@ export const Fluid = ({
     return (
         <>
             {createPortal(
-                <mesh
-                    ref={meshRef}
-                    onPointerMove={onPointerMove}
-                    scale={[size.width, size.height, 1]}>
-                    <planeGeometry args={[2, 2, 10, 10]} />
+                <mesh ref={meshRef} scale={[size.width, size.height, 1]}>
+                    <planeGeometry args={[2, 2]} />
                 </mesh>,
                 bufferScene,
             )}
