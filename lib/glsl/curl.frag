@@ -1,6 +1,5 @@
 precision highp float;
 
-varying vec2 vUv;
 varying vec2 vL;
 varying vec2 vR;
 varying vec2 vT;
