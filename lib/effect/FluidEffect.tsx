@@ -1,8 +1,8 @@
-import { Effect } from 'postprocessing';
+import { Effect, EffectAttribute } from 'postprocessing';
 import { Texture, Uniform, Vector3 } from 'three';
+import compositeFrag from '../glsl/composite.frag';
 import { EffectProps } from '../types';
 import { hexToRgb } from '../utils';
-import compositeFrag from '../glsl/composite.frag';
 
 type Uniforms = {
     tFluid: Texture | null;
@@ -33,6 +33,7 @@ export class FluidEffect extends Effect {
 
         super('FluidEffect', compositeFrag, {
             blendFunction: props.blendFunction,
+            attributes: EffectAttribute.CONVOLUTION,
             uniforms: new Map(Object.entries(uniforms)),
         });
 
