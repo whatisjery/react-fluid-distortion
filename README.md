@@ -43,8 +43,8 @@ import { Canvas } from '@react-three/fiber';
         background: '#000000',
     }}>
     <EffectComposer>
-        <Fluid />
         {... other effets}
+        <Fluid />
     </EffectComposer>
 </Canvas>;
 ```
