@@ -1,5 +1,5 @@
 import { createPortal, useFrame, useThree } from '@react-three/fiber';
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { Camera, Color, Mesh, Scene, Texture, Vector2, Vector3 } from 'three';
 import { ShaderPass } from 'three/examples/jsm/Addons.js';
 import { Effect as FluidEffect } from './effect/Fluid';
@@ -47,7 +47,7 @@ export const Fluid = ({
     const size = useThree((three) => three.size);
     const gl = useThree((three) => three.gl);
 
-    const bufferScene = useMemo(() => new Scene(), []);
+    const [bufferScene] = useState(() => new Scene());
     const bufferCamera = useMemo(() => new Camera(), []);
 
     const meshRef = useRef<Mesh>(null);
