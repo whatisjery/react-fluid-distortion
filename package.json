@@ -3,7 +3,7 @@
     "description": "A react-three-fiber component for creating fluid distortion effects",
     "author": "Jeremie Nallet",
     "private": false,
-    "version": "1.4.5",
+    "version": "1.5.0",
     "type": "module",
     "main": "dist/index.umd.js",
     "module": "dist/index.es.js",
