@@ -18,7 +18,7 @@ From the [react-three-fiber](https://github.com/pmndrs/react-three-fiber) docume
 
 ## Try it :
 
-[codesandbox](https://codesandbox.io/p/github/whatisjery/react-fluid-distortion/draft/empty-leaf)
+[codesandbox](https://codesandbox.io/p/sandbox/github/whatisjery/react-fluid-distortion)
 
 ## Installation :
 
