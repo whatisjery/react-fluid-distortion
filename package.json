@@ -23,7 +23,6 @@
         "@react-three/fiber": "*",
         "@react-three/postprocessing": "*",
         "postprocessing": "*",
-        "leva": "*",
         "react": "*",
         "react-dom": "*",
         "three": "*"

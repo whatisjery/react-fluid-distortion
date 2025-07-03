@@ -23,7 +23,7 @@ From the [react-three-fiber](https://github.com/pmndrs/react-three-fiber) docume
 ## Installation :
 
 ```bash
-npm install @whatisjery/react-fluid-distortion @react-three/drei @react-three/postprocessing postprocessing leva
+npm install @whatisjery/react-fluid-distortion @react-three/drei @react-three/postprocessing postprocessing
 ```
 
 ## Example of use :
@@ -47,18 +47,6 @@ import { Canvas } from '@react-three/fiber';
         <Fluid />
     </EffectComposer>
 </Canvas>;
-```
-
-## Display configuration panel :
-
-Show a debug panel to test options more easily.
-
-```jsx
-const config = useConfig();
-
-...
-
-<Fluid {...config} />
 ```
 
 ## Options :
