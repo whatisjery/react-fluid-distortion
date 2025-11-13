@@ -31,7 +31,6 @@ export default defineConfig({
                 '@react-three/fiber',
                 '@react-three/drei',
                 'three',
-                'leva',
                 'postprocessing',
             ],
             output: {
@@ -40,7 +39,6 @@ export default defineConfig({
                     '@react-three/fiber': 'reactThreeFiber',
                     '@react-three/drei': 'drei',
                     three: 'THREE',
-                    leva: 'leva',
                     postprocessing: 'postprocessing',
                 },
             },
