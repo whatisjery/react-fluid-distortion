@@ -10,35 +10,35 @@ export const useFBOs = () => {
         type: THREE.HalfFloatType,
         format: THREE.RGBAFormat,
         minFilter: THREE.LinearFilter,
-        depth: false,
+        depthBuffer: false,
     });
 
     const velocity = useDoubleFBO(DEFAULT_CONFIG.simRes, DEFAULT_CONFIG.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RGFormat,
         minFilter: THREE.LinearFilter,
-        depth: false,
+        depthBuffer: false,
     });
 
     const pressure = useDoubleFBO(DEFAULT_CONFIG.simRes, DEFAULT_CONFIG.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RedFormat,
         minFilter: THREE.NearestFilter,
-        depth: false,
+        depthBuffer: false,
     });
 
     const divergence = useFBO(DEFAULT_CONFIG.simRes, DEFAULT_CONFIG.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RedFormat,
         minFilter: THREE.NearestFilter,
-        depth: false,
+        depthBuffer: false,
     });
 
     const curl = useFBO(DEFAULT_CONFIG.simRes, DEFAULT_CONFIG.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RedFormat,
         minFilter: THREE.NearestFilter,
-        depth: false,
+        depthBuffer: false,
     });
 
     const FBOs = useMemo(() => {
