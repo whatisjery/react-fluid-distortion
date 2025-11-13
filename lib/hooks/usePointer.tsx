@@ -14,7 +14,6 @@ export const usePointer = ({ force }: { force: number }) => {
     const size = useThree((three) => three.size);
 
     const splatStack: SplatStack[] = useRef([]).current;
-
     const lastMouse = useRef<Vector2>(new Vector2());
     const hasMoved = useRef<boolean>(false);
 
@@ -37,7 +36,7 @@ export const usePointer = ({ force }: { force: number }) => {
                 velocityX: deltaX * force,
                 velocityY: -deltaY * force,
             };
-            // console.log(splatInfo.mouseX, splatInfo.mouseY)
+
             splatStack.push(splatInfo);
         },
         [force, size.height, size.width, splatStack],
