@@ -1,7 +1,7 @@
 import { ShaderMaterial, Texture, Vector2, Vector3 } from 'three';
 import { useEffect, useMemo } from 'react';
 import { useThree } from '@react-three/fiber';
-import { OPTS } from '../constant';
+import { DEFAULT_CONFIG, REFRESH_RATE } from '../constant';
 
 import baseVertex from '../glsl/base.vert';
 import clearFrag from '../glsl/clear.frag';
@@ -27,7 +27,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Texture(),
                 },
                 dt: {
-                    value: 1 / OPTS.refreshRate,
+                    value: 1 / REFRESH_RATE,
                 },
                 uDissipation: {
                     value: 1.0,
@@ -50,7 +50,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Texture(),
                 },
                 uClearValue: {
-                    value: OPTS.pressure,
+                    value: DEFAULT_CONFIG.pressure,
                 },
                 texelSize: {
                     value: new Vector2(),
@@ -166,7 +166,7 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Vector2(),
                 },
                 uRadius: {
-                    value: OPTS.radius / 100.0,
+                    value: DEFAULT_CONFIG.radius / 100.0,
                 },
                 texelSize: {
                     value: new Vector2(),
@@ -191,10 +191,10 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
                     value: new Texture(),
                 },
                 uCurlValue: {
-                    value: OPTS.curl,
+                    value: DEFAULT_CONFIG.curl,
                 },
                 dt: {
-                    value: 1 / OPTS.refreshRate,
+                    value: 1 / REFRESH_RATE,
                 },
                 texelSize: {
                     value: new Vector2(),
@@ -225,7 +225,10 @@ export const useMaterials = (): { [key: string]: ShaderMaterial } => {
     useEffect(() => {
         for (const material of Object.values(shaderMaterials)) {
             const aspectRatio = size.width / (size.height + 400);
-            material.uniforms.texelSize.value.set(1 / (OPTS.simRes * aspectRatio), 1 / OPTS.simRes);
+            material.uniforms.texelSize.value.set(
+                1 / (DEFAULT_CONFIG.simRes * aspectRatio),
+                1 / DEFAULT_CONFIG.simRes,
+            );
         }
 
         return () => {

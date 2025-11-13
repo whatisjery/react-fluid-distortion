@@ -12,7 +12,7 @@ export type SharedProps = {
     blendFunction?: BlendFunction;
 };
 
-export type Props = SharedProps & {
+export type FluidProps = SharedProps & {
     densityDissipation?: number;
     pressure?: number;
     velocityDissipation?: number;
@@ -22,6 +22,6 @@ export type Props = SharedProps & {
     swirl?: number;
 };
 
-export type EffectProps = SharedProps & {
-    tFluid?: Texture;
+export type EffectProps = Required<SharedProps> & {
+    tFluid: Texture;
 };

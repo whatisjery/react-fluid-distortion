@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { useFBO } from '@react-three/drei';
+import { useFBO, type FboProps } from '@react-three/drei';
 import { useRef } from 'react';
 
 type FBO = {
@@ -10,14 +10,7 @@ type FBO = {
     setGenerateMipmaps: (value: boolean) => void;
 };
 
-type Options = {
-    minFilter?: THREE.TextureFilter;
-    format?: THREE.PixelFormat;
-    type?: THREE.TextureDataType;
-    depth: boolean;
-};
-
-export const useDoubleFBO = (width: number, height: number, options: Options) => {
+export const useDoubleFBO = (width: number, height: number, options: FboProps) => {
     const read = useFBO(width, height, options);
 
     const write = useFBO(width, height, options);

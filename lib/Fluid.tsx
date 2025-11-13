@@ -5,11 +5,13 @@ import { ShaderPass } from 'three/examples/jsm/Addons.js';
 import { Effect as FluidEffect } from './effect/Fluid';
 import { useFBOs } from './hooks/useFBOs';
 import { useMaterials } from './hooks/useMaterials';
-import { Props } from './types';
-import { OPTS } from './constant';
+import { type FluidProps } from './types';
+import { DEFAULT_CONFIG } from './constant';
 import { usePointer } from './hooks/usePointer';
-import { BlendFunction } from 'postprocessing';
 import { normalizeScreenHz } from './utils';
+
+type MaterialName = keyof ReturnType<typeof useMaterials>;
+type FBONames = keyof ReturnType<typeof useFBOs>;
 
 type Uniforms = {
     uColor: Vector3 | Color;
@@ -28,22 +30,22 @@ type Uniforms = {
 };
 
 export const Fluid = ({
-    blend = OPTS.blend,
-    force = OPTS.force,
-    radius = OPTS.radius,
-    curl = OPTS.curl,
-    swirl = OPTS.swirl,
-    intensity = OPTS.intensity,
-    distortion = OPTS.distortion,
-    fluidColor = OPTS.fluidColor,
-    backgroundColor = OPTS.backgroundColor,
-    showBackground = OPTS.showBackground,
-    rainbow = OPTS.rainbow,
-    pressure = OPTS.pressure,
-    densityDissipation = OPTS.densityDissipation,
-    velocityDissipation = OPTS.velocityDissipation,
-    blendFunction = BlendFunction.NORMAL,
-}: Props) => {
+    blend = DEFAULT_CONFIG.blend,
+    force = DEFAULT_CONFIG.force,
+    radius = DEFAULT_CONFIG.radius,
+    curl = DEFAULT_CONFIG.curl,
+    swirl = DEFAULT_CONFIG.swirl,
+    intensity = DEFAULT_CONFIG.intensity,
+    distortion = DEFAULT_CONFIG.distortion,
+    fluidColor = DEFAULT_CONFIG.fluidColor,
+    backgroundColor = DEFAULT_CONFIG.backgroundColor,
+    showBackground = DEFAULT_CONFIG.showBackground,
+    rainbow = DEFAULT_CONFIG.rainbow,
+    pressure = DEFAULT_CONFIG.pressure,
+    densityDissipation = DEFAULT_CONFIG.densityDissipation,
+    velocityDissipation = DEFAULT_CONFIG.velocityDissipation,
+    blendFunction = DEFAULT_CONFIG.blendFunction,
+}: FluidProps) => {
     const size = useThree((three) => three.size);
     const gl = useThree((three) => three.gl);
 
@@ -60,7 +62,7 @@ export const Fluid = ({
     const splatStack = usePointer({ force });
 
     const setShaderMaterial = useCallback(
-        (name: keyof ReturnType<typeof useMaterials>) => {
+        (name: MaterialName) => {
             if (!meshRef.current) return;
 
             meshRef.current.material = materials[name];
@@ -70,7 +72,7 @@ export const Fluid = ({
     );
 
     const setRenderTarget = useCallback(
-        (name: keyof ReturnType<typeof useFBOs>) => {
+        (name: FBONames) => {
             const target = FBOs[name];
 
             if ('write' in target) {
@@ -88,11 +90,7 @@ export const Fluid = ({
     );
 
     const setUniforms = useCallback(
-        <K extends keyof Uniforms>(
-            material: keyof ReturnType<typeof useMaterials>,
-            uniform: K,
-            value: Uniforms[K],
-        ) => {
+        <K extends keyof Uniforms>(material: MaterialName, uniform: K, value: Uniforms[K]) => {
             const mat = materials[material];
 
             if (mat && mat.uniforms[uniform]) {

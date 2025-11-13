@@ -3,38 +3,38 @@ import * as THREE from 'three';
 import { useFBO } from '@react-three/drei';
 import { useEffect, useMemo } from 'react';
 import { useDoubleFBO } from '../hooks/useDoubleFBO';
-import { OPTS } from '../constant';
+import { DEFAULT_CONFIG } from '../constant';
 
 export const useFBOs = () => {
-    const density = useDoubleFBO(OPTS.dyeRes, OPTS.dyeRes, {
+    const density = useDoubleFBO(DEFAULT_CONFIG.dyeRes, DEFAULT_CONFIG.dyeRes, {
         type: THREE.HalfFloatType,
         format: THREE.RGBAFormat,
         minFilter: THREE.LinearFilter,
         depth: false,
     });
 
-    const velocity = useDoubleFBO(OPTS.simRes, OPTS.simRes, {
+    const velocity = useDoubleFBO(DEFAULT_CONFIG.simRes, DEFAULT_CONFIG.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RGFormat,
         minFilter: THREE.LinearFilter,
         depth: false,
     });
 
-    const pressure = useDoubleFBO(OPTS.simRes, OPTS.simRes, {
+    const pressure = useDoubleFBO(DEFAULT_CONFIG.simRes, DEFAULT_CONFIG.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RedFormat,
         minFilter: THREE.NearestFilter,
         depth: false,
     });
 
-    const divergence = useFBO(OPTS.simRes, OPTS.simRes, {
+    const divergence = useFBO(DEFAULT_CONFIG.simRes, DEFAULT_CONFIG.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RedFormat,
         minFilter: THREE.NearestFilter,
         depth: false,
     });
 
-    const curl = useFBO(OPTS.simRes, OPTS.simRes, {
+    const curl = useFBO(DEFAULT_CONFIG.simRes, DEFAULT_CONFIG.simRes, {
         type: THREE.HalfFloatType,
         format: THREE.RedFormat,
         minFilter: THREE.NearestFilter,

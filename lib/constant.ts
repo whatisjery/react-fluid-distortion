@@ -1,4 +1,6 @@
-export const OPTS = {
+import { BlendFunction } from 'postprocessing';
+
+export const DEFAULT_CONFIG = {
     blend: 5,
     intensity: 2,
     force: 1.1,
@@ -15,5 +17,7 @@ export const OPTS = {
     rainbow: false,
     dyeRes: 512,
     simRes: 128,
-    refreshRate: 60,
+    blendFunction: BlendFunction.NORMAL,
 } as const;
+
+export const REFRESH_RATE = 60;

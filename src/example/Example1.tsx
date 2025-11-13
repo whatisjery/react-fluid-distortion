@@ -7,7 +7,7 @@ import { Fluid } from '../../lib';
 import { ThreeTunnel } from './tunel';
 
 import Text from './Text';
-import { OPTS } from 'lib/constant';
+import { DEFAULT_CONFIG } from 'lib/constant';
 import { useControls } from 'leva';
 
 const Torus = () => {
@@ -42,7 +42,7 @@ const Torus = () => {
 const Example1 = () => {
     const [config] = useControls('Settings', () => ({
         intensity: {
-            value: OPTS.intensity,
+            value: DEFAULT_CONFIG.intensity,
             min: 0.0,
             max: 10,
             step: 0.01,
@@ -50,7 +50,7 @@ const Example1 = () => {
         },
 
         force: {
-            value: OPTS.force,
+            value: DEFAULT_CONFIG.force,
             min: 0,
             max: 20,
             step: 0.1,
@@ -58,7 +58,7 @@ const Example1 = () => {
         },
 
         distortion: {
-            value: OPTS.distortion,
+            value: DEFAULT_CONFIG.distortion,
             min: 0,
             max: 2,
             step: 0.01,
@@ -66,7 +66,7 @@ const Example1 = () => {
         },
 
         curl: {
-            value: OPTS.curl,
+            value: DEFAULT_CONFIG.curl,
             min: 0,
             max: 50,
             step: 0.1,
@@ -74,7 +74,7 @@ const Example1 = () => {
         },
 
         swirl: {
-            value: OPTS.swirl,
+            value: DEFAULT_CONFIG.swirl,
             min: 0,
             max: 20,
             step: 1,
@@ -82,17 +82,17 @@ const Example1 = () => {
         },
 
         fluidColor: {
-            value: OPTS.fluidColor,
+            value: DEFAULT_CONFIG.fluidColor,
             label: 'fluid color',
         },
 
         backgroundColor: {
-            value: OPTS.backgroundColor,
+            value: DEFAULT_CONFIG.backgroundColor,
             label: 'background color',
         },
 
         blend: {
-            value: OPTS.blend,
+            value: DEFAULT_CONFIG.blend,
             min: 0.0,
             max: 10,
             step: 0.01,
@@ -100,7 +100,7 @@ const Example1 = () => {
         },
 
         showBackground: {
-            value: OPTS.showBackground,
+            value: DEFAULT_CONFIG.showBackground,
             label: 'show background',
         },
 
@@ -110,7 +110,7 @@ const Example1 = () => {
         },
 
         pressure: {
-            value: OPTS.pressure,
+            value: DEFAULT_CONFIG.pressure,
             min: 0,
             max: 1,
             step: 0.01,
@@ -118,7 +118,7 @@ const Example1 = () => {
         },
 
         densityDissipation: {
-            value: OPTS.densityDissipation,
+            value: DEFAULT_CONFIG.densityDissipation,
             min: 0,
             max: 1,
             step: 0.01,
@@ -126,7 +126,7 @@ const Example1 = () => {
         },
 
         velocityDissipation: {
-            value: OPTS.velocityDissipation,
+            value: DEFAULT_CONFIG.velocityDissipation,
             min: 0,
             max: 1,
             step: 0.01,
@@ -134,7 +134,7 @@ const Example1 = () => {
         },
 
         radius: {
-            value: OPTS.radius,
+            value: DEFAULT_CONFIG.radius,
             min: 0.01,
             max: 1,
             step: 0.01,
