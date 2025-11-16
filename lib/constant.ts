@@ -17,7 +17,7 @@ export const DEFAULT_CONFIG = {
     rainbow: false,
     dyeRes: 512,
     simRes: 128,
-    blendFunction: BlendFunction.NORMAL,
+    blendFunction: BlendFunction.SET,
 } as const;
 
 export const REFRESH_RATE = 60;
