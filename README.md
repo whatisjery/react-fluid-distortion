@@ -1,27 +1,22 @@
-> [!IMPORTANT]  
-> A better version of this effect is available as part of [Atelier UI](https://atelier-ui.com/docs/components/cursor/fluid-distortion).
-
----
-
 [![Version](https://img.shields.io/npm/v/@whatisjery/react-fluid-distortion?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/@whatisjery/react-fluid-distortion)
 
+> [!WARNING]  
+> A better version of this effect is available as part of [Atelier UI](https://atelier-ui.com/docs/components/cursor/fluid-distortion).
+
 # Fluid Distortion for React Three Fiber
+
+![screen capture](./src/assets/screen_capture.png)
 
 Implementing post-processing fluid distortion effects in response to cursor interactions for React-Three-Fiber.
 Based on the shaders developed by [Pavel Dobryakov](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation)
 
 ---
 
-From the [react-three-fiber](https://github.com/pmndrs/react-three-fiber) documentation :
+## Demo
 
-> [!WARNING]  
-> Three-fiber is a React renderer, it must pair with a major version of React, just like react-dom, react-native, etc. @react-three/fiber@8 pairs with react@18, @react-three/fiber@9 pairs with react@19.
+- [Atelier UI](https://atelier-ui.com/docs/components/cursor/fluid-distortion)
 
----
-
-## Try it :
-
-[codesandbox](https://codesandbox.io/p/sandbox/github/whatisjery/react-fluid-distortion)
+- [CodeSandbox](https://codesandbox.io/p/sandbox/github/whatisjery/react-fluid-distortion)
 
 ## Installation :
 
