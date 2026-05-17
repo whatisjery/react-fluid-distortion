@@ -1,6 +1,6 @@
 [![Version](https://img.shields.io/npm/v/@whatisjery/react-fluid-distortion?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/@whatisjery/react-fluid-distortion)
 
-> [!WARNING]  
+> [!IMPORTANT]  
 > A better version of this effect is available as part of [Atelier UI](https://atelier-ui.com/docs/components/cursor/fluid-distortion).
 
 # Fluid Distortion for React Three Fiber
